@@ -1,22 +1,26 @@
 <?php
 
 $config = \TYPO3\CodingStandards\CsFixerConfig::create();
-$config
-    ->setHeader(
-        <<<EOM
-        This file is part of the TYPO3 project.
+$config->setHeader(
+    'This file is part of the "waf" Extension for TYPO3 CMS.
 
-        (c) 2019-2024 Benni Mack
-                      Simon Gilli
-
-        For the full copyright and license information, please view
-        the LICENSE file that was distributed with this source code.
-
-        The TYPO3 project - inspiring people to share!
-        EOM,
-        true
-    )
-    ->addRules([
+For the full copyright and license information, please read the
+LICENSE.txt file that was distributed with this source code.',
+    true
+);
+$config->setFinder(
+    (new PhpCsFixer\Finder())
+        ->in(realpath(__DIR__ . '/../../'))
+        ->ignoreVCSIgnored(true)
+        ->notPath('/^.Build\//')
+        ->notPath('/^Build\/php-cs-fixer\/php-cs-fixer.php/')
+        ->notPath('/^Build\/phpunit\/(UnitTestsBootstrap|FunctionalTestsBootstrap).php/')
+        ->notPath('/^Configuration\//')
+        ->notPath('/^Documentation\//')
+        ->notName('/^ext_(emconf|localconf|tables).php/')
+)
+    ->setRiskyAllowed(true)
+    ->setRules([
         '@PER:risky' => true,
         '@PHP80Migration:risky' => true,
         '@PHP81Migration' => true,
@@ -60,12 +64,5 @@ $config
         'phpdoc_var_annotation_correct_order' => true,
         'phpdoc_var_without_name' => true,
         'self_accessor' => true,
-    ])
-    ->getFinder()
-    ->exclude('templates')
-    ->exclude('tests/Unit/Fixtures')
-    ->in(__DIR__)
-    ->append(['typo3-coding-standards'])
-;
-
+    ]);
 return $config;
