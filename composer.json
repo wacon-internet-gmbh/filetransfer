@@ -4,7 +4,7 @@
     "description": "TYPO3 Extension to send downloadables via email secury and privacy complaint.",
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": "^8.2",
+        "php": "^8.1",
         "typo3/cms-backend": "^12.4",
         "typo3/cms-core": "^12.4"
     },
