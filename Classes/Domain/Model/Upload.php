@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Domain\Model;
 
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Upload extends AbstractEntity
 {

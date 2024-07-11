@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Bootstrap\TCA;
 
-use Wacon\Filetransfer\Bootstrap\Base;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Wacon\Filetransfer\Bootstrap\Base;
 
 class ExtLocalconf extends Base
 {
@@ -39,10 +39,10 @@ class ExtLocalconf extends Base
             $this->getExtensionKeyAsNamespace(),
             'Upload',
             [
-                UploadController::class => 'form,upload,success'
+                UploadController::class => 'form,upload,success',
             ],
             [
-                UploadController::class => 'form,upload'
+                UploadController::class => 'form,upload',
             ]
         );
     }
