@@ -50,7 +50,7 @@ return [
                 'readonly' => true,
                 'range' => [
                     'lower' => 0,
-                ]
+                ],
             ],
         ],
         'asset' => [
