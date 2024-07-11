@@ -15,7 +15,7 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Wacon\Filetransfer\Bootstrap\TCA;
+namespace Wacon\Filetransfer\Bootstrap;
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wacon\Filetransfer\Bootstrap\Base;
