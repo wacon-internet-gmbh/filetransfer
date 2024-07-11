@@ -4,3 +4,4 @@ Build/testing-docker/.env
 composer.lock
 *.zip
 db.sql.gz
+.vscode

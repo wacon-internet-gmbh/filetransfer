@@ -15,48 +15,36 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Wacon\Filetransfer\Bootstrap;
+namespace Wacon\Filetransfer\Bootstrap\TCA;
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wacon\Filetransfer\Bootstrap\Base;
-use Wacon\Filetransfer\Controller\UploadController;
-use Wacon\Filetransfer\Controller\DownloadController;
 
-class ExtLocalconf extends Base
+class TtContent extends Base
 {
     /**
      * Does the main class purpose
      */
     public function invoke()
     {
-        $this->configurePlugins();
+        $this->registerPlugins();
     }
 
     /**
-     * ExtensionUtility::configurePlugin
+     * ExtensionUtility::registerPlugin
      */
-    private function configurePlugins()
+    private function registerPlugins()
     {
-        ExtensionUtility::configurePlugin(
+        ExtensionUtility::registerPlugin(
             $this->getExtensionKeyAsNamespace(),
             'Upload',
-            [
-                UploadController::class => 'form,upload,success',
-            ],
-            [
-                UploadController::class => 'form,upload',
-            ]
+            $this->getLLL('locallang_plugins.xlf:upload.title'),
         );
 
-        ExtensionUtility::configurePlugin(
+        ExtensionUtility::registerPlugin(
             $this->getExtensionKeyAsNamespace(),
-            'Upload',
-            [
-                DownloadController::class => 'download',
-            ],
-            [
-                DownloadController::class => 'download',
-            ]
+            'Download',
+            $this->getLLL('locallang_plugins.xlf:download.title'),
         );
     }
 }

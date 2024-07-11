@@ -36,4 +36,15 @@ abstract class Base
     {
         return GeneralUtility::underscoredToUpperCamelCase($this->extensionKey);
     }
+
+    /**
+     *
+     * Return the LLL path as string
+     * @param string $key
+     * @return string
+     */
+    protected function getLLL(string $key): string
+    {
+        return 'LLL:EXT:' . $this->extensionKey . '/Resources/Private/Language/' . $key;
+    }
 }

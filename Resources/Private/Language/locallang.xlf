@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:filetransfer/Resources/Private/Language/locallang.xlf" date="2024-07-11T09:20:51Z" product-name="filetransfer">
+        <header/>
+        <body>
+			<trans-unit id="errors.fatal.upload" resname="errors.fatal.upload">
+				<source>Fatal Upload error. You should not see this message. Please contact the administrator.</source>
+			</trans-unit>
+
+			<trans-unit id="form.upload.validity_duration.I.3days" resname="form.upload.validity_duration.I.3days">
+				<source>Expire in 3 days</source>
+			</trans-unit>
+			<trans-unit id="form.upload.fileupload" resname="form.upload.fileupload">
+				<source>Add ZIP file</source>
+			</trans-unit>
+			<trans-unit id="form.upload.dropzone" resname="form.upload.dropzone">
+				<source>Drag your ZIP file in this area or use the input field below</source>
+			</trans-unit>
+			<trans-unit id="upload.form.submit.label" resname="upload.form.submit.label">
+				<source>Send</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

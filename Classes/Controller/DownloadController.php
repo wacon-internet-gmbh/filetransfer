@@ -19,39 +19,9 @@ namespace Wacon\Filetransfer\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use Wacon\Filetransfer\Domain\Model\Upload;
 
-final class UploadController extends ActionController
+final class DownloadController extends ActionController
 {
-    /**
-     * Show the upoad form
-     * @return ResponseInterface
-     */
-    public function formAction(): ResponseInterface
-    {
-        return $this->htmlResponse();
-    }
-
-    /**
-     * Show the upoad form
-     * @param Upload $upload
-     * @return ResponseInterface
-     */
-    public function uploadAction(Upload $upload): ResponseInterface
-    {
-        debug($upload);
-        return $this->htmlResponse();
-    }
-
-    /**
-     * Show the success message
-     * @return ResponseInterface
-     */
-    public function successAction(): ResponseInterface
-    {
-        return $this->htmlResponse();
-    }
-
     /**
      * Show the success message
      * @return ResponseInterface

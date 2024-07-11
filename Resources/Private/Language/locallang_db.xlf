@@ -6,6 +6,12 @@
 			<trans-unit id="tx_filetransfer_domain_model_upload" resname="tx_filetransfer_domain_model_upload">
 				<source>Upload</source>
 			</trans-unit>
+			<trans-unit id="tx_filetransfer_domain_model_upload.sender_address" resname="tx_filetransfer_domain_model_upload.sender_address">
+				<source>Email from</source>
+			</trans-unit>
+			<trans-unit id="tx_filetransfer_domain_model_upload.receiver_address" resname="tx_filetransfer_domain_model_upload.receiver_address">
+				<source>Email to</source>
+			</trans-unit>
 			<trans-unit id="tx_filetransfer_domain_model_upload.subject" resname="tx_filetransfer_domain_model_upload.subject">
 				<source>Subject</source>
 			</trans-unit>
@@ -15,8 +21,8 @@
 			<trans-unit id="tx_filetransfer_domain_model_upload.token" resname="tx_filetransfer_domain_model_upload.token">
 				<source>Token</source>
 			</trans-unit>
-			<trans-unit id="tx_filetransfer_domain_model_upload.downloaded" resname="tx_filetransfer_domain_model_upload.downloaded">
-				<source>Downloaded</source>
+			<trans-unit id="tx_filetransfer_domain_model_upload.download_limit" resname="tx_filetransfer_domain_model_upload.download_limit">
+				<source>Download Limit</source>
 			</trans-unit>
 			<trans-unit id="tx_filetransfer_domain_model_upload.asset" resname="tx_filetransfer_domain_model_upload.asset">
 				<source>Asset</source>

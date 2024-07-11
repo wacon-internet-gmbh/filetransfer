@@ -41,10 +41,10 @@ class Upload extends AbstractEntity
     protected string $token = '';
 
     /**
-     * Amount of times the asset is downloaded
+     * Amount of times the asset can be downloaded
      * @var int
      */
-    protected int $downloaded = 0;
+    protected int $downloadLimit = 1;
 
     /**
      * The asset to download. It is always a single zip file
@@ -57,6 +57,24 @@ class Upload extends AbstractEntity
      * @var \DateTime
      */
     protected ?\DateTime $validityDate;
+
+    /**
+     * Amount of days the download link is valid
+     * @var int
+     */
+    protected int $validityDurationInDays = 3;
+
+    /**
+     * E-Mail Adress from the sender
+     * @var string
+     */
+    protected string $senderAddress;
+
+    /**
+     * E-Mail Adress from the receiver
+     * @var string
+     */
+    protected string $receiverAddress;
 
     /**
      * Get subject of the E-Mail
@@ -198,6 +216,78 @@ class Upload extends AbstractEntity
     public function setValidityDate(\DateTime $validityDate = null): self
     {
         $this->validityDate = $validityDate;
+
+        return $this;
+    }
+
+    /**
+     * Get e-Mail Adress from the sender
+     *
+     * @return  string
+     */
+    public function getSenderAddress(): string
+    {
+        return $this->senderAddress;
+    }
+
+    /**
+     * Set e-Mail Adress from the sender
+     *
+     * @param  string  $senderAddress  E-Mail Adress from the sender
+     *
+     * @return  self
+     */
+    public function setSenderAddress(string $senderAddress): self
+    {
+        $this->senderAddress = $senderAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get e-Mail Adress from the receiver
+     *
+     * @return  string
+     */
+    public function getReceiverAddress(): string
+    {
+        return $this->receiverAddress;
+    }
+
+    /**
+     * Set e-Mail Adress from the receiver
+     *
+     * @param  string  $receiverAddress  E-Mail Adress from the receiver
+     *
+     * @return  self
+     */
+    public function setReceiverAddress(string $receiverAddress): self
+    {
+        $this->receiverAddress = $receiverAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get amount of days the download link is valid
+     *
+     * @return  int
+     */
+    public function getValidityDurationInDays(): int
+    {
+        return $this->validityDurationInDays;
+    }
+
+    /**
+     * Set amount of days the download link is valid
+     *
+     * @param  int  $validityDurationInDays  Amount of days the download link is valid
+     *
+     * @return  self
+     */
+    public function setValidityDurationInDays(int $validityDurationInDays): self
+    {
+        $this->validityDurationInDays = $validityDurationInDays;
 
         return $this;
     }
