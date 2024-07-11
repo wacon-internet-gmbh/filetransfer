@@ -20,15 +20,24 @@ namespace Wacon\Filetransfer\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Wacon\Filetransfer\Domain\Model\Upload;
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 
 final class UploadController extends ActionController
 {
+    public function __construct(private readonly PageRenderer $pageRenderer)
+    {}
+
     /**
      * Show the upoad form
      * @return ResponseInterface
      */
     public function formAction(): ResponseInterface
     {
+        $this->pageRenderer->getJavaScriptRenderer()->addJavaScriptModuleInstruction(
+            JavaScriptModuleInstruction::create('@wacon/filetransfer/Fileupload.js')
+        );
+        $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
         return $this->htmlResponse();
     }
 

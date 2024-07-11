@@ -1,3 +1,7 @@
+## Version 0.0.4
+- [FEATURE] Add Fileupload.js Module to handle drag und drop file area
+- [WIP] Implement Drag and Drop file upload
+
 ## Version 0.0.3
 - [IMPORTANT] Rename downloaded to download_limit
 - [FEATURE] Add Download Plugin

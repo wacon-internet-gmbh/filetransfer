@@ -1,10 +1,23 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-    <f:form action="upload" name="upload" object="{upload}" method="POST" enctype="multipart/form-data">
+    <f:form id="f{contentObjectData.uid}" action="upload" name="upload" object="{upload}" method="POST" enctype="multipart/form-data">
         <f:render partial="Upload/Properties" arguments="{upload: upload}" />
         <div class="mt-3">
             <f:form.submit name="submit" class="btn btn-primary" value="{f:translate(key:'upload.form.submit.label', extensionName: 'filetransfer')}" />
         </div>
     </f:form>
+    <f:comment><f:asset.script identifier="filetransfer_fileupload" src="EXT:filetransfer/Resources/Public/JavaScript/Fileupload.js" type="module" /></f:comment>
+    <f:asset.script identifier="filetransfer_fileupload_{contentObjectData.uid}" type="module">
+        import Fileupload from '@wacon/filetransfer/Fileupload.js'
+        <f:alias map="{'ocb': '{', 'ccb': '}'}">
+        const fileupload = new Fileupload({ocb}
+            dropZone: "#f{contentObjectData.uid} .upload-dropzone",
+            fileUploadInput: "#f{contentObjectData.uid} .upload-dropzone-input",
+            errors: {ocb}
+                unsupportedType: '#f{contentObjectData.uid} .upload-dropzone--error-unsupported-type'
+            {ccb}
+        {ccb});
+        </f:alias>
+    </f:asset.script>
 </f:section>

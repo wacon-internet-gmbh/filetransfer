@@ -2,7 +2,10 @@
     <div class="upload-dropzone">
         <f:format.html><f:translate key="form.upload.dropzone" extensionName="filetransfer" /></f:format.html>
     </div>
-    <f:form.upload property="asset" class="form-control" required="true" placeholder="{f:translate(key: 'form.upload.fileupload', extensionName: 'filetransfer')}" accept="zip,tar,gz" />
+    <div class="upload-dropzone--error-unsupported-type d-none">
+        <f:translate key="form.upload.dropZone.error.unsupported_type" extensionName="filetransfer" />
+    </div>
+    <f:form.upload property="asset" class="form-control upload-dropzone-input" required="true" placeholder="{f:translate(key: 'form.upload.fileupload', extensionName: 'filetransfer')}" accept=".zip,.tar,.gz" />
 </div>
 <div class="mb-3 upload-senderaddress">
     <f:form.textfield property="senderAddress" type="email" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.sender_address')}" />

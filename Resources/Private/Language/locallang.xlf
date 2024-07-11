@@ -16,6 +16,9 @@
 			<trans-unit id="form.upload.dropzone" resname="form.upload.dropzone">
 				<source>Drag your ZIP file in this area or use the input field below</source>
 			</trans-unit>
+			<trans-unit id="form.upload.dropZone.error.unsupported_type" resname="form.upload.dropZone.error.unsupported_type">
+				<source>The file is not supported. Please only upload zip, gzip or tar files.</source>
+			</trans-unit>
 			<trans-unit id="upload.form.submit.label" resname="upload.form.submit.label">
 				<source>Send</source>
 			</trans-unit>
