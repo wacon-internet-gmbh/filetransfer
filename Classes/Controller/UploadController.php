@@ -18,15 +18,14 @@ declare(strict_types=1);
 namespace Wacon\Filetransfer\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Wacon\Filetransfer\Domain\Model\Upload;
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 
 final class UploadController extends ActionController
 {
-    public function __construct(private readonly PageRenderer $pageRenderer)
-    {}
+    public function __construct(private readonly PageRenderer $pageRenderer) {}
 
     /**
      * Show the upoad form
