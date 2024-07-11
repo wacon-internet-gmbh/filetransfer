@@ -37,6 +37,7 @@ final class UploadController extends ActionController
         $this->pageRenderer->getJavaScriptRenderer()->addJavaScriptModuleInstruction(
             JavaScriptModuleInstruction::create('@wacon/filetransfer/Fileupload.js')
         );
+
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
         return $this->htmlResponse();
     }

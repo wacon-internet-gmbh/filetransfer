@@ -1,6 +1,8 @@
 ## Version 0.0.4
 - [FEATURE] Add Fileupload.js Module to handle drag und drop file area
-- [WIP] Implement Drag and Drop file upload
+- [FEATURE] Implement Drag and Drop file upload (clientwise)
+- [FEATURE] Add Constant Editor option to include utilities.css which has some bootstrap classes
+- [FEATURE] Add some basic css styling
 
 ## Version 0.0.3
 - [IMPORTANT] Rename downloaded to download_limit

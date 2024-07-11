@@ -1,8 +1,8 @@
 <div class="mb-3 upload-asset">
-    <div class="upload-dropzone">
+    <div class="upload-dropzone mb-3">
         <f:format.html><f:translate key="form.upload.dropzone" extensionName="filetransfer" /></f:format.html>
     </div>
-    <div class="upload-dropzone--error-unsupported-type d-none">
+    <div class="upload-dropzone--error-unsupported-type d-none mb-3">
         <f:translate key="form.upload.dropZone.error.unsupported_type" extensionName="filetransfer" />
     </div>
     <f:form.upload property="asset" class="form-control upload-dropzone-input" required="true" placeholder="{f:translate(key: 'form.upload.fileupload', extensionName: 'filetransfer')}" accept=".zip,.tar,.gz" />

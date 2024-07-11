@@ -63,7 +63,8 @@ export default class Fileupload {
       }
 
       if (noErrors) {
-        this.fileUploadInput.files = event.dataTransfer.files;
+        cObj.hideAllErrors();
+        cObj.fileUploadInput.files = event.dataTransfer.files;
       }
     });
 
@@ -107,8 +108,11 @@ export default class Fileupload {
     target.classList.remove('d-none');
   }
 
+  /**
+   * Hide all error messages
+   */
   hideAllErrors() {
-    this.form.querySelector(this.settings.cssClasses.error).forEach((element) => {
+    this.form.querySelectorAll("." + this.settings.cssClasses.error).forEach((element) => {
       element.classList.add('d-none');
     });
   }
@@ -119,9 +123,9 @@ export default class Fileupload {
    * @returns
    */
   getClosestForm(element) {
-    if (!element || element.tagName == 'body') {
+    if (!element || element.tagName == 'BODY') {
       return null;
-    }else if (element.tagName == 'form') {
+    }else if (element.tagName == 'FORM') {
       return element;
     }
 

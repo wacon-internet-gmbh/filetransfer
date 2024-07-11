@@ -1,0 +1,28 @@
+/**********************************************************
+ * DROP ZONE - START
+ *********************************************************/
+.upload-dropzone {
+    padding: 1.5rem 1.75rem;
+    text-align: center;
+    border: 1px dashed var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), 0.25);
+    border-radius: var(--bs-border-radius);
+}
+
+.upload-dropzone:hover,
+.upload-dropzone:focus {
+    background-color: rgba(var(--bs-secondary-rgb), 0.25);
+    border-color: var(--bs-secondary);
+}
+/**********************************************************
+ * DROP ZONE - END
+ *********************************************************/
+/**********************************************************
+ * FORM - START
+ *********************************************************/
+ .form-filetransfer {
+    max-width: 450px;
+ }
+/**********************************************************
+ * FORM - END
+ *********************************************************/

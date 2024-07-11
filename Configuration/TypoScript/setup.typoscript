@@ -1,0 +1,7 @@
+plugin.tx_filetransfer {
+  settings {
+    template {
+      includeUtilities = {$plugin.tx_filetransfer.settings.template.includeUtilities}
+    }
+  }
+}
