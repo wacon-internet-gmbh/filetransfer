@@ -38,7 +38,6 @@ abstract class Base
     }
 
     /**
-     *
      * Return the LLL path as string
      * @param string $key
      * @return string

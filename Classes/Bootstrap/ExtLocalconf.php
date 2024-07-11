@@ -18,9 +18,8 @@ declare(strict_types=1);
 namespace Wacon\Filetransfer\Bootstrap;
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-use Wacon\Filetransfer\Bootstrap\Base;
-use Wacon\Filetransfer\Controller\UploadController;
 use Wacon\Filetransfer\Controller\DownloadController;
+use Wacon\Filetransfer\Controller\UploadController;
 
 class ExtLocalconf extends Base
 {

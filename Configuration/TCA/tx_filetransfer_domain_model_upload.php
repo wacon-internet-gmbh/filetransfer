@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'versioningWS' => false,
         'iconfile' => 'EXT:filetransfer/Resources/Public/Icons/Extension.gif',
-        'origUid' => 't3_origuid'
+        'origUid' => 't3_origuid',
     ],
     'columns' => [
         'sender_address' => [
