@@ -49,7 +49,7 @@ return [
                 'type' => 'number',
                 'readonly' => true,
                 'range' => [
-                    'lower' => 0
+                    'lower' => 0,
                 ]
             ],
         ],
@@ -58,7 +58,7 @@ return [
             'config' => [
                 'type' => 'file',
                 'maxitems' => 1,
-                'allowed' => 'zip,gz,gzip,tar'
+                'allowed' => 'zip,gz,gzip,tar',
             ],
         ],
         'validity_date' => [

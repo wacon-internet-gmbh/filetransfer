@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Bootstrap\TCA;
 
-use Wacon\Filetransfer\Bootstrap\Base;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use Wacon\Filetransfer\Bootstrap\Base;
 
 class SysTemplate extends Base
 {
