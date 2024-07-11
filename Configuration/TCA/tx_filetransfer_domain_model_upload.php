@@ -84,7 +84,7 @@ return [
                 'default' => 3,
                 'range' => [
                     'lower' => 3,
-                ]
+                ],
             ],
         ],
     ],
