@@ -56,7 +56,7 @@ class Upload extends AbstractEntity
      *  Date until the download is valid
      * @var \DateTime
      */
-    protected \DateTime $validityDate = null;
+    protected ?\DateTime $validityDate;
 
     /**
      * Get subject of the E-Mail
@@ -174,6 +174,30 @@ class Upload extends AbstractEntity
     public function setAsset(FileReference $asset): self
     {
         $this->asset = $asset;
+
+        return $this;
+    }
+
+    /**
+     * Get date until the download is valid
+     *
+     * @return  \DateTime
+     */
+    public function getValidityDate(): \DateTime
+    {
+        return $this->validityDate;
+    }
+
+    /**
+     * Set date until the download is valid
+     *
+     * @param  \DateTime  $validityDate  Date until the download is valid
+     *
+     * @return  self
+     */
+    public function setValidityDate(\DateTime $validityDate = null): self
+    {
+        $this->validityDate = $validityDate;
 
         return $this;
     }
