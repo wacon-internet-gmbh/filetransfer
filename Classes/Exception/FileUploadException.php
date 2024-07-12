@@ -23,9 +23,9 @@ class FileUploadException extends Exception {
     /**
      * Set new message
      * @param string $message
-     * @return void
      */
-    public function setMessage(string $message) {
+    public function setMessage(string $message)
+    {
         $this->message = $message;
     }
 }

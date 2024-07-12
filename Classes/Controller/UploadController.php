@@ -18,15 +18,15 @@ declare(strict_types=1);
 namespace Wacon\Filetransfer\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use Wacon\Filetransfer\Domain\Model\Upload;
-use TYPO3\CMS\Core\Core\Environment;
-use Wacon\Filetransfer\Service\FileUploadService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Wacon\Filetransfer\Exception\FileUploadException;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Wacon\Filetransfer\Domain\Model\Upload;
+use Wacon\Filetransfer\Service\FileUploadService;
+use Wacon\Filetransfer\Exception\FileUploadException;
 
 final class UploadController extends ActionController
 {
@@ -36,7 +36,6 @@ final class UploadController extends ActionController
 
     /**
      * Before any action function is called
-     * @return void
      */
     public function initializeAction()
     {
@@ -93,7 +92,7 @@ final class UploadController extends ActionController
             }
 
             $upload->setAsset($asset);
-        }catch(FileUploadException $e) {
+        } catch(FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);
 
             // We need to do this, because I only set translation keys inside the FileUploadService
