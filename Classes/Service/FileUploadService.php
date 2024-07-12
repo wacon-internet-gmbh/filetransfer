@@ -17,11 +17,18 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Service;
 
-use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wacon\Filetransfer\Exception\FileUploadException;
+use TYPO3\CMS\Core\Resource\Folder;
+use TYPO3\CMS\Core\Crypto\Random;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Wacon\Filetransfer\Domain\Model\Upload;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Connection;
 
 class FileUploadService
 {
@@ -33,9 +40,15 @@ class FileUploadService
 
     /**
      * All uploaded assets
-     * @var ObjectStorage<FileReference>
+     * @var ObjectStorage<File>
      */
     protected ObjectStorage $assets;
+
+    /**
+     * Target folder
+     * @var Folder
+     */
+    protected ?Folder $folder;
 
     /**
      * Target storage
@@ -50,7 +63,10 @@ class FileUploadService
      * @throws FileUploadException
      */
     public function __construct(
-        private readonly StorageRepository $storageRepository
+        private readonly StorageRepository $storageRepository,
+        private readonly Random $random,
+        private readonly HashService $hashService,
+        private readonly ConnectionPool $connectionPool
     ) {}
 
     /**
@@ -76,17 +92,19 @@ class FileUploadService
         }
 
         // make sure target folder exists
-        $folder = null;
+        $this->folder = null;
 
         if (!$this->storage->hasFolder($this->settings['folder'])) {
             // if folder does not exist,
             // then we create it
-            $folder = $this->storage->createFolder($this->settings['folder']);
+            $this->folder = $this->storage->createFolder($this->settings['folder']);
         } else {
-            $folder = $this->storage->getFolder($this->settings['folder']);
+            $this->folder = $this->storage->getFolder($this->settings['folder']);
         }
 
-        debug($folder);
+        if (!$this->folder) {
+            throw new FileUploadException('form.upload.fileuploadservice.folder_notfound');
+        }
     }
 
     /**
@@ -97,14 +115,55 @@ class FileUploadService
      */
     public function uploadSingle(array $file)
     {
-        debug($this->settings);
-        debug($file);
+        $newFile = $this->storage->addFile(
+            $file['tmp_name'],
+            $this->folder,
+            $this->createUniqueFileName($file['name'])
+        );
+
+        $this->assets->attach($newFile);
+    }
+
+    /**
+     * Create a sys_file_reference from a file to Upload
+     * @param Upload $upload
+     * @param File $file
+     * @param array $data
+     * @return void
+     */
+    public function createSysFileReference(Upload $upload, File $file, array $data = [])
+    {
+        // First we set asset to one, because we have one file
+        $dbTable = 'tx_filetransfer_domain_model_upload';
+        $queryBuilder = $this->connectionPool
+            ->getQueryBuilderForTable($dbTable);
+        $queryBuilder
+            ->update($dbTable)
+            ->where(
+                $queryBuilder->expr()->eq('asset', $queryBuilder->createNamedParameter($upload->getUid(), Connection::PARAM_INT))
+            )->set('asset', 1)
+            ->executeStatement();
+
+        // then we create sys_file_reference entry
+        $dbTable = 'sys_file_reference';
+        $queryBuilder = $this->connectionPool
+            ->getQueryBuilderForTable($dbTable);
+        $queryBuilder
+            ->insert($dbTable)
+            ->values(array_merge([
+                'uid_local' => $file->getUid(),
+                'tablenames' => 'tx_filetransfer_domain_model_upload',
+                'uid_foreign' => $upload->getUid(),
+                'fieldname' => 'asset',
+                'pid' => $upload->getPid(),
+            ], $data))
+            ->executeStatement();
     }
 
     /**
      * Get all uploaded assets
      *
-     * @return  ObjectStorage<FileReference>
+     * @return  ObjectStorage<File>
      */
     public function getAssets(): ObjectStorage
     {
@@ -113,9 +172,9 @@ class FileUploadService
 
     /**
      * Return the first uploaded asset, if any or null
-     * @return \TYPO3\CMS\Core\Resource\FileReference|null
+     * @return \TYPO3\CMS\Core\Resource\File|null
      */
-    public function getFirstAsset(): ?FileReference
+    public function getFirstAsset(): ?File
     {
         return $this->assets && $this->assets->count() > 0 ? $this->assets->offsetGet(0) : null;
     }
@@ -123,7 +182,7 @@ class FileUploadService
     /**
      * Set all uploaded assets
      *
-     * @param  ObjectStorage<FileReference>  $assets  All uploaded assets
+     * @param  ObjectStorage<File>  $assets  All uploaded assets
      *
      * @return  self
      */
@@ -132,5 +191,17 @@ class FileUploadService
         $this->assets = $assets;
 
         return $this;
+    }
+
+    /**
+     * Create an unique filename which is unique and safe (impossible to guess)
+     * @param string $name
+     * @return string
+     */
+    protected function createUniqueFileName($name): string
+    {
+        $randomString = $this->random->generateRandomHexString(16);
+
+        return GeneralUtility::hmac($this->hashService->generateHmac($randomString), $name);
     }
 }

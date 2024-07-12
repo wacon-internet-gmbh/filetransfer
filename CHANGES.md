@@ -1,3 +1,6 @@
+## Version 0.0.6
+- [FEATURE] Create FileUploadService to handle the file upload
+
 ## Version 0.0.5
 - [WIP] Create FileUploadService to handle the file upload
 - [FEATURE] Init Upload object on form if not present to show initial values

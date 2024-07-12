@@ -26,8 +26,14 @@
 			<trans-unit id="form.upload.fileuploadservice.storage_notfound" resname="form.upload.fileuploadservice.storage_notfound">
 				<source>There is no TYPO3 file storage. Please contact the administrator.</source>
 			</trans-unit>
+			<trans-unit id="form.upload.fileuploadservice.folder_notfound" resname="form.upload.fileuploadservice.folder_notfound">
+				<source>The target folder inside TYPO3 could not be found. Please contact the administrator.</source>
+			</trans-unit>
 			<trans-unit id="form.upload.fileuploadservice.upload_failed" resname="form.upload.fileuploadservice.upload_failed">
 				<source>The file could not be uploaded. Please contact the administrator.</source>
+			</trans-unit>
+			<trans-unit id="form.upload.fileuploadservice.filereference_error" resname="form.upload.fileuploadservice.filereference_error">
+				<source>The file reference could not be created. Please contact the administrator.</source>
 			</trans-unit>
         </body>
     </file>

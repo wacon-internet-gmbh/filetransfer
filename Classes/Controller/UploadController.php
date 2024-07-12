@@ -25,14 +25,20 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Wacon\Filetransfer\Domain\Model\Upload;
+use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 use Wacon\Filetransfer\Exception\FileUploadException;
 use Wacon\Filetransfer\Service\FileUploadService;
+use TYPO3\CMS\Core\Resource\FileRepository;
 
 final class UploadController extends ActionController
 {
     protected string $extensionKey = 'filetransfer';
 
-    public function __construct(private readonly PageRenderer $pageRenderer) {}
+    public function __construct(
+        private readonly PageRenderer $pageRenderer,
+        private readonly UploadRepository $uploadRepository,
+        private readonly FileRepository $fileRepository,
+    ) {}
 
     /**
      * Show the upoad form
@@ -72,13 +78,26 @@ final class UploadController extends ActionController
             $fileUploadService = GeneralUtility::makeInstance(FileUploadService::class);
             $fileUploadService->init($this->settings['upload']);
             $fileUploadService->uploadSingle($asset);
-            $asset = $fileUploadService->getFirstAsset();
+            $assetAsFile = $fileUploadService->getFirstAsset();
 
-            if (!$asset) {
+            if (!$assetAsFile) {
                 throw new FileUploadException(LocalizationUtility::translate('form.upload.fileuploadservice.upload_failed', $this->extensionKey));
             }
 
-            $upload->setAsset($asset);
+            // First add upload and commit to get uid
+            // $upload->setToken($tokenService->createHash());
+            $this->uploadRepository->add($upload);
+            $this->uploadRepository->commit();
+
+            // then we can create a sys_file_reference
+            $fileUploadService->createSysFileReference($upload, $assetAsFile, [
+                'title' => $asset['name']
+            ]);
+            $sysFileReference = $this->fileRepository->findByRelation('tx_filetransfer_domain_model_upload', 'asset', $upload->getUid());
+
+            if (!$sysFileReference) {
+                throw new FileUploadException(LocalizationUtility::translate('form.upload.fileuploadservice.upload_failed', $this->extensionKey));
+            }
         } catch(FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);
 
