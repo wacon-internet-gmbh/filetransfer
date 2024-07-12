@@ -21,6 +21,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -28,7 +29,6 @@ use Wacon\Filetransfer\Domain\Model\Upload;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 use Wacon\Filetransfer\Exception\FileUploadException;
 use Wacon\Filetransfer\Service\FileUploadService;
-use TYPO3\CMS\Core\Resource\FileRepository;
 
 final class UploadController extends ActionController
 {
