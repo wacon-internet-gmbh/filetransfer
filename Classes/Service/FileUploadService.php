@@ -17,18 +17,18 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Service;
 
+use TYPO3\CMS\Core\Crypto\Random;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wacon\Filetransfer\Exception\FileUploadException;
-use TYPO3\CMS\Core\Resource\Folder;
-use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wacon\Filetransfer\Domain\Model\Upload;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Connection;
 
 class FileUploadService
 {
@@ -129,7 +129,6 @@ class FileUploadService
      * @param Upload $upload
      * @param File $file
      * @param array $data
-     * @return void
      */
     public function createSysFileReference(Upload $upload, File $file, array $data = [])
     {

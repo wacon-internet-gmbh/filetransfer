@@ -91,7 +91,7 @@ final class UploadController extends ActionController
 
             // then we can create a sys_file_reference
             $fileUploadService->createSysFileReference($upload, $assetAsFile, [
-                'title' => $asset['name']
+                'title' => $asset['name'],
             ]);
             $sysFileReference = $this->fileRepository->findByRelation('tx_filetransfer_domain_model_upload', 'asset', $upload->getUid());
 

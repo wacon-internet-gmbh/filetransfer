@@ -19,10 +19,10 @@ namespace Wacon\Filetransfer\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class UploadRepository extends Repository {
+class UploadRepository extends Repository
+{
     /**
      * End transaction
-     * @return void
      */
     public function commit()
     {
