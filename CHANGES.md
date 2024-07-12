@@ -1,3 +1,9 @@
+## Version 0.0.5
+- [WIP] Create FileUploadService to handle the file upload
+- [FEATURE] Init Upload object on form if not present to show initial values
+- [FEATURE] Create target folder if not exist
+- [BUGFIX] Upload Model getter/setter for downloadlimit
+
 ## Version 0.0.4
 - [FEATURE] Add Fileupload.js Module to handle drag und drop file area
 - [FEATURE] Implement Drag and Drop file upload (clientwise)

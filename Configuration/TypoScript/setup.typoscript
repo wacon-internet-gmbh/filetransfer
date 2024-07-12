@@ -3,5 +3,10 @@ plugin.tx_filetransfer {
     template {
       includeUtilities = {$plugin.tx_filetransfer.settings.template.includeUtilities}
     }
+
+    upload {
+      storage = 1
+      folder = filetransfer
+    }
   }
 }

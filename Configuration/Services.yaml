@@ -7,3 +7,6 @@ services:
   Wacon\Filetransfer\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
+
+  Wacon\Filetransfer\Service\FileUploadService:
+    public: true

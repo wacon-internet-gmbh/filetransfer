@@ -149,25 +149,25 @@ class Upload extends AbstractEntity
     }
 
     /**
-     * Get amount of times the asset is downloaded
+     * Get amount of times the asset can be downloaded
      *
      * @return  int
      */
-    public function getDownloaded(): int
+    public function getDownloadLimit(): int
     {
-        return $this->downloaded;
+        return $this->downloadLimit;
     }
 
     /**
-     * Set amount of times the asset is downloaded
+     * Set amount of times the asset can be downloaded
      *
      * @param  int  $downloaded  Amount of times the asset is downloaded
      *
      * @return  self
      */
-    public function setDownloaded(int $downloaded): self
+    public function setDownloadLimit(int $downloadLimit): self
     {
-        $this->downloaded = $downloaded;
+        $this->downloadLimit = $downloadLimit;
 
         return $this;
     }
@@ -290,5 +290,15 @@ class Upload extends AbstractEntity
         $this->validityDurationInDays = $validityDurationInDays;
 
         return $this;
+    }
+
+    public function setTestData()
+    {
+        $this->senderAddress = 'kevin.lee@wacon.de';
+        $this->receiverAddress = 'slavlee@gmx.de';
+        $this->subject = 'Lorem Ipsum Subject';
+        $this->message = 'Lorem Ipsum Message';
+        $this->validityDurationInDays = 3;
+        $this->downloadLimit = 1;
     }
 }
