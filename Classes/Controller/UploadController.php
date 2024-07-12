@@ -25,8 +25,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Wacon\Filetransfer\Domain\Model\Upload;
-use Wacon\Filetransfer\Service\FileUploadService;
 use Wacon\Filetransfer\Exception\FileUploadException;
+use Wacon\Filetransfer\Service\FileUploadService;
 
 final class UploadController extends ActionController
 {
