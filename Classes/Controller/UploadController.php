@@ -35,18 +35,6 @@ final class UploadController extends ActionController
     public function __construct(private readonly PageRenderer $pageRenderer) {}
 
     /**
-     * Before any action function is called
-     */
-    public function initializeAction()
-    {
-        /* if ($this->request->hasAttribute('upload')) {
-            $this->arguments->getArgument('upload')
-                ->getPropertyMappingConfiguration()
-                ->setTargetTypeForSubProperty('validityDuration', 'int');
-        } */
-    }
-
-    /**
      * Show the upoad form
      * @param Upload $upload
      * @return ResponseInterface
@@ -64,7 +52,6 @@ final class UploadController extends ActionController
         $this->pageRenderer->getJavaScriptRenderer()->addJavaScriptModuleInstruction(
             JavaScriptModuleInstruction::create('@wacon/filetransfer/Fileupload.js')
         );
-
 
         $this->view->assign('upload', $upload);
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);

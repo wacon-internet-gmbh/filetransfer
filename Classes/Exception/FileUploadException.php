@@ -19,7 +19,8 @@ namespace Wacon\Filetransfer\Exception;
 
 use TYPO3\CMS\Extbase\Exception;
 
-class FileUploadException extends Exception {
+class FileUploadException extends Exception
+{
     /**
      * Set new message
      * @param string $message
