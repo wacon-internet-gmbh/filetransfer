@@ -60,7 +60,7 @@ class DeleteDownloadedCommand extends Command
         $uploads = $this->uploadRepository->findBy(['download_limit' => 0]);
         $amountOfFiles = count($uploads);
 
-        foreach($uploads as $upload) {
+        foreach ($uploads as $upload) {
              /**
              * @var Upload $upload
              */

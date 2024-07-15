@@ -60,7 +60,7 @@ class DeleteExpiredCommand extends Command
         $uploads = $this->uploadRepository->findByAllExpired();
         $amountOfFiles = count($uploads);
 
-        foreach($uploads as $upload) {
+        foreach ($uploads as $upload) {
             /**
              * @var Upload $upload
              */
