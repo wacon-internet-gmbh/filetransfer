@@ -61,7 +61,7 @@ class DeleteDownloadedCommand extends Command
         $amountOfFiles = count($uploads);
 
         foreach ($uploads as $upload) {
-             /**
+            /**
              * @var Upload $upload
              */
             // Delete file
