@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:filetransfer/Resources/Private/Language/locallang_db.xlf" date="2024-07-11T09:20:51Z" product-name="filetransfer">
+        <header/>
+        <body>
+			<trans-unit id="sheetGeneral" resname="sheetGeneral">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="upload.download_page" resname="upload.download_page">
+				<source>Download page</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -10,3 +10,6 @@ services:
 
   Wacon\Filetransfer\Service\FileUploadService:
     public: true
+
+  Wacon\Filetransfer\Service\MailService:
+    public: true

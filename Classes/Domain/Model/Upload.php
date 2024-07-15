@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Domain\Model;
 
-use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Upload extends AbstractEntity
@@ -170,6 +170,19 @@ class Upload extends AbstractEntity
         $this->downloadLimit = $downloadLimit;
 
         return $this;
+    }
+
+    /**
+     * Decrement download limit
+     * @return void
+     */
+    public function decrementDownloadLimit()
+    {
+        $this->downloadLimit--;
+
+        if ($this->downloadLimit < 0) {
+            $this->downloadLimit = 0;
+        }
     }
 
     /**

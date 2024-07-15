@@ -11,6 +11,7 @@ return [
         'versioningWS' => false,
         'iconfile' => 'EXT:filetransfer/Resources/Public/Icons/Extension.gif',
         'origUid' => 't3_origuid',
+        'adminOnly' => true
     ],
     'columns' => [
         'sender_address' => [
@@ -45,6 +46,7 @@ return [
         ],
         'token' => [
             'label' => 'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.token',
+            'exclude' => true,
             'config' => [
                 'type' => 'input',
                 'size' => 20,
@@ -89,6 +91,6 @@ return [
         ],
     ],
     'types' => [
-        0 => ['showitem' => 'sender_address,receiver_address,subject,message,asset,validity_duration,validity_date,downloaded,token'],
+        0 => ['showitem' => 'sender_address,receiver_address,subject,message,asset,validity_duration,validity_date,download_limit,token'],
     ],
 ];

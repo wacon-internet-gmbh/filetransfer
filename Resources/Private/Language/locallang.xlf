@@ -6,6 +6,9 @@
 			<trans-unit id="errors.fatal.upload" resname="errors.fatal.upload">
 				<source>Fatal Upload error. You should not see this message. Please contact the administrator.</source>
 			</trans-unit>
+			<trans-unit id="errors.expired.upload" resname="errors.expired.upload">
+				<source>The download link has expired.</source>
+			</trans-unit>
 
 			<trans-unit id="form.upload.validity_duration.I.3days" resname="form.upload.validity_duration.I.3days">
 				<source>Expire in 3 days</source>
@@ -34,6 +37,10 @@
 			</trans-unit>
 			<trans-unit id="form.upload.fileuploadservice.filereference_error" resname="form.upload.fileuploadservice.filereference_error">
 				<source>The file reference could not be created. Please contact the administrator.</source>
+			</trans-unit>
+
+			<trans-unit id="mail.download.downloadlink" resname="mail.download.downloadlink">
+				<source>Download file</source>
 			</trans-unit>
         </body>
     </file>

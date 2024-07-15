@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Bootstrap\TCA;
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wacon\Filetransfer\Bootstrap\Base;
 
@@ -35,10 +36,17 @@ class TtContent extends Base
      */
     private function registerPlugins()
     {
-        ExtensionUtility::registerPlugin(
+        $pluginSignature = ExtensionUtility::registerPlugin(
             $this->getExtensionKeyAsNamespace(),
             'Upload',
             $this->getLLL('locallang_plugins.xlf:upload.title'),
+        );
+
+        $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+
+        ExtensionManagementUtility::addPiFlexFormValue(
+            $pluginSignature,
+            $this->getFlexformPath('Upload.xml')
         );
 
         ExtensionUtility::registerPlugin(

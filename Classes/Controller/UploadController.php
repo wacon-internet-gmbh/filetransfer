@@ -29,6 +29,8 @@ use Wacon\Filetransfer\Domain\Model\Upload;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 use Wacon\Filetransfer\Exception\FileUploadException;
 use Wacon\Filetransfer\Service\FileUploadService;
+use Wacon\Filetransfer\Service\MailService;
+use Wacon\Filetransfer\Service\TokenService;
 
 final class UploadController extends ActionController
 {
@@ -38,6 +40,7 @@ final class UploadController extends ActionController
         private readonly PageRenderer $pageRenderer,
         private readonly UploadRepository $uploadRepository,
         private readonly FileRepository $fileRepository,
+        private readonly TokenService $tokenService
     ) {}
 
     /**
@@ -85,7 +88,7 @@ final class UploadController extends ActionController
             }
 
             // First add upload and commit to get uid
-            // $upload->setToken($tokenService->createHash());
+            $upload->setToken($this->tokenService->create($this->extensionKey . '_download_' . time()));
             $this->uploadRepository->add($upload);
             $this->uploadRepository->commit();
 
@@ -98,6 +101,11 @@ final class UploadController extends ActionController
             if (!$sysFileReference) {
                 throw new FileUploadException(LocalizationUtility::translate('form.upload.fileuploadservice.upload_failed', $this->extensionKey));
             }
+
+            //Send Mail
+            $mailService = GeneralUtility::makeInstance(MailService::class);
+            $mailService->init($this->settings);
+            $mailService->send($upload);
         } catch(FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);
 

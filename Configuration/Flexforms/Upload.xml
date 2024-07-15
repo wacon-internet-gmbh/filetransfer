@@ -1,0 +1,32 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>
+                    LLL:EXT:filetransfer/Resources/Private/Language/locallang_flexforms.xlf:sheetGeneral
+                </sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.downloadPid>
+                        <label>
+                            LLL:EXT:filetransfer/Resources/Private/Language/locallang_flexforms.xlf:upload.download_page
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <maxitems>1</maxitems>
+                            <minitems>1</minitems>
+                            <size>1</size>
+                            <suggestOptions>
+                                <default>
+                                    <additionalSearchFields>nav_title, alias, url</additionalSearchFields>
+                                    <addWhere>AND pages.doktype = 1</addWhere>
+                                </default>
+                            </suggestOptions>
+                        </config>
+                    </settings.downloadPid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
