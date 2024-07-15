@@ -2,6 +2,7 @@
 - [IMPORTANT] Implement Download function
 - [FEATURE] Add FlexForm for upload plugin to choose download page
 - [FEATURE] tx_filetransfer_domain_model_upload is adminOnly, Exclude token field
+- [FEATURE] Add upload success message
 - [NOTICE] ext_emconf: Wrong Email and company
 
 ## Version 0.0.6

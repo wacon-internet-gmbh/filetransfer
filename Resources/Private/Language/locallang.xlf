@@ -38,6 +38,9 @@
 			<trans-unit id="form.upload.fileuploadservice.filereference_error" resname="form.upload.fileuploadservice.filereference_error">
 				<source>The file reference could not be created. Please contact the administrator.</source>
 			</trans-unit>
+			<trans-unit id="form.upload.success" resname="form.upload.success">
+				<source>The upload is completed and the mail is sent to the receiver.</source>
+			</trans-unit>
 
 			<trans-unit id="mail.download.downloadlink" resname="mail.download.downloadlink">
 				<source>Download file</source>
