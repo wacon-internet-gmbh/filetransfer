@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Service;
 
-use Wacon\Filetransfer\Domain\Model\Upload;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
-use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
+use Wacon\Filetransfer\Domain\Model\Upload;
 
 class MailService
 {
@@ -76,7 +76,7 @@ class MailService
                 ->uriFor(
                     'download',
                     [
-                        'token' => $upload->getToken()
+                        'token' => $upload->getToken(),
                     ],
                     'Download',
                     'filetransfer',

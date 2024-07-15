@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace Wacon\Filetransfer\Service;
 
 use TYPO3\CMS\Core\Crypto\Random;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 
 class TokenService
 {

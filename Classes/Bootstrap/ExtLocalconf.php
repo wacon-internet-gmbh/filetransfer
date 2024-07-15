@@ -20,7 +20,6 @@ namespace Wacon\Filetransfer\Bootstrap;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wacon\Filetransfer\Controller\DownloadController;
 use Wacon\Filetransfer\Controller\UploadController;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ExtLocalconf extends Base
 {
@@ -63,7 +62,6 @@ class ExtLocalconf extends Base
 
     /**
      * Add fluid template path into $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths']
-     * @return void
      */
     private function addFluidEmailTemplatePath()
     {

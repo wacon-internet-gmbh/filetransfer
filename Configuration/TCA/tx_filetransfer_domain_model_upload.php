@@ -11,7 +11,7 @@ return [
         'versioningWS' => false,
         'iconfile' => 'EXT:filetransfer/Resources/Public/Icons/Extension.gif',
         'origUid' => 't3_origuid',
-        'adminOnly' => true
+        'adminOnly' => true,
     ],
     'columns' => [
         'sender_address' => [
