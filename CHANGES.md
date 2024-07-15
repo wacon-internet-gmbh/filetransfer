@@ -1,3 +1,8 @@
+## Version 0.2.0
+- [FEATURE] Add Symfony Task to delete downloaded uploads
+- [WIP] Add Symfony Task to delete expired uploads
+- [BUGFIX] Uploaded file needs the file extension
+
 ## Version 0.1.0
 - [IMPORTANT] Implement Download function
 - [FEATURE] Add FlexForm for upload plugin to choose download page

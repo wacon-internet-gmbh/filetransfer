@@ -13,3 +13,13 @@ services:
 
   Wacon\Filetransfer\Service\MailService:
     public: true
+
+  Wacon\Filetransfer\Command\DeleteDownloadedCommand:
+    tags:
+      - name: 'console.command'
+        command: 'filetransfer:delete_downloaded'
+
+  Wacon\Filetransfer\Command\DeleteExpiredCommand:
+    tags:
+      - name: 'console.command'
+        command: 'filetransfer:delete_expired'

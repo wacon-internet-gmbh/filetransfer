@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class UploadRepository extends Repository
@@ -27,5 +28,17 @@ class UploadRepository extends Repository
     public function commit()
     {
         $this->persistenceManager->persistAll();
+    }
+
+    /**
+     * Return all records where the validity date has expired
+     * @return \QueryResultInterface
+     */
+    public function findByAllExpired(): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->lessThan('validity_date', new \DateTime())
+        )->execute();
     }
 }

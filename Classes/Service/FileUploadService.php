@@ -118,7 +118,7 @@ class FileUploadService
         $newFile = $this->storage->addFile(
             $file['tmp_name'],
             $this->folder,
-            $this->createUniqueFileName($file['name'])
+            $this->createUniqueFileName($file['name']) . '.' . $this->getFileExtension($file)
         );
 
         $this->assets->attach($newFile);
@@ -202,5 +202,15 @@ class FileUploadService
         $randomString = $this->random->generateRandomHexString(16);
 
         return GeneralUtility::hmac($this->hashService->generateHmac($randomString), $name);
+    }
+
+    /**
+     * Return the file extension
+     * @param mixed $file
+     * @return string
+     */
+    protected function getFileExtension($file): string
+    {
+        return substr($file, strripos($file, '.'));
     }
 }

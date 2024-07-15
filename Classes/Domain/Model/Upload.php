@@ -50,13 +50,13 @@ class Upload extends AbstractEntity
      * The asset to download. It is always a single zip file
      * @var FileReference
      */
-    protected FileReference $asset;
+    protected ?FileReference $asset = null;
 
     /**
      *  Date until the download is valid
      * @var \DateTime
      */
-    protected ?\DateTime $validityDate;
+    protected ?\DateTime $validityDate = null;
 
     /**
      * Amount of days the download link is valid
@@ -189,7 +189,7 @@ class Upload extends AbstractEntity
      *
      * @return  FileReference
      */
-    public function getAsset(): FileReference
+    public function getAsset(): ?FileReference
     {
         return $this->asset;
     }
