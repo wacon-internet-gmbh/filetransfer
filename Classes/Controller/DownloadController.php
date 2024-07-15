@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Controller;
 
-use TYPO3\CMS\Core\Http\ImmediateResponseException;
-use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 
 final class DownloadController extends ActionController
 {

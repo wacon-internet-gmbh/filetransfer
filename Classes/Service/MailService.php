@@ -40,7 +40,8 @@ class MailService
      * Init the mail service
      * @param array $settings
      */
-    public function init(array $settings){
+    public function init(array $settings)
+    {
         $this->settings = $settings;
     }
 

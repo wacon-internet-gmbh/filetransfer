@@ -174,7 +174,6 @@ class Upload extends AbstractEntity
 
     /**
      * Decrement download limit
-     * @return void
      */
     public function decrementDownloadLimit()
     {
