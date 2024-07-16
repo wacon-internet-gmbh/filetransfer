@@ -22,9 +22,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\StorageRepository;
-use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 
@@ -70,7 +70,7 @@ class GarbageCollectorCommand extends Command
         $uploads = $this->uploadRepository->findAll();
 
         foreach ($pids as $pid) {
-            $storage = $this->storageRepository->getStorageObject((int) $pid);
+            $storage = $this->storageRepository->getStorageObject((int)$pid);
 
             if ($storage) {
                 $folder = $storage->getFolder($input->getArgument('folder'));
@@ -88,8 +88,8 @@ class GarbageCollectorCommand extends Command
                     $file;
                     $deleteFile = true;
 
-                    foreach($uploads as $uploads) {
-                        if ($uploads->getAsset() && $uploads->getAsset()->getOriginalFile()->getUid() == $file->getUid()) {
+                    foreach ($uploads as $upload) {
+                        if ($upload->getAsset() && $upload->getAsset()->getOriginalFile()->getUid() == $file->getUid()) {
                             $deleteFile = false;
                             break;
                         }

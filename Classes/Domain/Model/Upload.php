@@ -236,7 +236,6 @@ class Upload extends AbstractEntity
 
     /**
      * Calculate and set the validity date based on validityDurcationInDays
-     * @return void
      */
     public function calculateAndSetValidityDate()
     {
