@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -50,6 +51,7 @@ class Upload extends AbstractEntity
      * The asset to download. It is always a single zip file
      * @var FileReference
      */
+    #[Cascade(['value' => 'remove'])]
     protected ?FileReference $asset = null;
 
     /**
@@ -231,6 +233,17 @@ class Upload extends AbstractEntity
 
         return $this;
     }
+
+    /**
+     * Calculate and set the validity date based on validityDurcationInDays
+     * @return void
+     */
+    public function calculateAndSetValidityDate()
+    {
+        $this->validityDate = new \DateTime();
+        $this->validityDate->add(\DateInterval::createFromDateString(((string) $this->validityDurationInDays) . ' day'));
+    }
+
 
     /**
      * Get e-Mail Adress from the sender

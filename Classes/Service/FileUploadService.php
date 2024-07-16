@@ -118,7 +118,7 @@ class FileUploadService
         $newFile = $this->storage->addFile(
             $file['tmp_name'],
             $this->folder,
-            $this->createUniqueFileName($file['name']) . '.' . $this->getFileExtension($file)
+            $this->createUniqueFileName($file['name']) . $this->getFileExtension($file['name'])
         );
 
         $this->assets->attach($newFile);
@@ -206,11 +206,11 @@ class FileUploadService
 
     /**
      * Return the file extension
-     * @param mixed $file
+     * @param string $filename
      * @return string
      */
-    protected function getFileExtension($file): string
+    protected function getFileExtension(string $filename): string
     {
-        return substr($file, strripos($file, '.'));
+        return substr($filename, strripos($filename, '.'));
     }
 }

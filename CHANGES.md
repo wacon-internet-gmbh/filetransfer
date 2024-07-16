@@ -1,3 +1,7 @@
+## Version 0.3.0
+- [FEATURE] Add Symfony Task to delete expired uploads
+- [FEATURE] Add Symfony Task to delete files with no uploads relation
+
 ## Version 0.2.0
 - [FEATURE] Add Symfony Task to delete downloaded uploads
 - [WIP] Add Symfony Task to delete expired uploads

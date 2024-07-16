@@ -23,3 +23,8 @@ services:
     tags:
       - name: 'console.command'
         command: 'filetransfer:delete_expired'
+
+  Wacon\Filetransfer\Command\GarbageCollectorCommand:
+    tags:
+      - name: 'console.command'
+        command: 'filetransfer:garbage_collector'
