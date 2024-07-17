@@ -243,7 +243,6 @@ class Upload extends AbstractEntity
         $this->validityDate->add(\DateInterval::createFromDateString(((string)$this->validityDurationInDays) . ' day'));
     }
 
-
     /**
      * Get e-Mail Adress from the sender
      *
