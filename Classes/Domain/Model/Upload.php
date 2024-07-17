@@ -240,7 +240,7 @@ class Upload extends AbstractEntity
     public function calculateAndSetValidityDate()
     {
         $this->validityDate = new \DateTime();
-        $this->validityDate->add(\DateInterval::createFromDateString(((string) $this->validityDurationInDays) . ' day'));
+        $this->validityDate->add(\DateInterval::createFromDateString(((string)$this->validityDurationInDays) . ' day'));
     }
 
 

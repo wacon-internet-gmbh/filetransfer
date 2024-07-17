@@ -85,7 +85,6 @@ class GarbageCollectorCommand extends Command
                     /**
                      * @var File $file
                      */
-                    $file;
                     $deleteFile = true;
 
                     foreach ($uploads as $upload) {
