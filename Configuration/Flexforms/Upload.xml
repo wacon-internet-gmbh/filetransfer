@@ -25,6 +25,15 @@
                             </suggestOptions>
                         </config>
                     </settings.downloadPid>
+                    <settings.signature>
+                        <label>
+                            LLL:EXT:filetransfer/Resources/Private/Language/locallang_flexforms.xlf:upload.signature
+                        </label>
+                        <config>
+                            <type>text</type>
+                            <enableRichtext>1</enableRichtext>
+                        </config>
+                    </settings.signature>
                 </el>
             </ROOT>
         </sDEF>

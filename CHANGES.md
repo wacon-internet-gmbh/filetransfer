@@ -1,3 +1,6 @@
+## Version 1.0.5
+- [BUGFIX] Forgot Signature in FlexForm
+
 ## Version 1.0.4
 - [BUGFIX] Upload Model: Set start value for receiverAddress and senderAddress
 - [BUGFIX] Reduces incoming $_FILES to the current, because we only support one file

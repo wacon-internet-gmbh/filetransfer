@@ -1,3 +1,3 @@
 {upload.message}
 <f:translate key="mail.download.downloadlink" extensionName="filetransfer" />: {downloadUri}
-{signature}
+<f:format.stripTags>{signature}</f:format.stripTags>

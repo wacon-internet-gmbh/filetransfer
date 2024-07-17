@@ -58,6 +58,7 @@ class MailService
             ->subject($upload->getSubject())
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('Download')
+            ->assign('signature', $this->settings['signature'])
             ->assign('upload', $upload)
             ->assign('downloadUri', $this->createDownloadUri($upload));
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);

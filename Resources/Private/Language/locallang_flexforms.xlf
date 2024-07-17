@@ -9,6 +9,9 @@
 			<trans-unit id="upload.download_page" resname="upload.download_page">
 				<source>Download page</source>
 			</trans-unit>
+			<trans-unit id="upload.signature" resname="upload.signature">
+				<source>Signature</source>
+			</trans-unit>
         </body>
     </file>
 </xliff>
