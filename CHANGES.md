@@ -1,3 +1,6 @@
+## Version 1.0.1
+- [BUGFIX] Form UploadViewHelper does not support required and placeholder attributes, so I use additionalAttributes and put placeholder as form-text
+
 ## Version 1.0.0
 - [IMPORTANT] First stable release 1.0.0
 
