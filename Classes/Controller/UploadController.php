@@ -78,6 +78,7 @@ final class UploadController extends ActionController
     public function uploadAction(Upload $upload, array $asset): ResponseInterface
     {
         try {
+            $asset = current($asset); // we only support one file
             $fileUploadService = GeneralUtility::makeInstance(FileUploadService::class);
             $fileUploadService->init($this->settings['upload']);
             $fileUploadService->uploadSingle($asset);

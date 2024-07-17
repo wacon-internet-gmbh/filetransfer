@@ -70,13 +70,13 @@ class Upload extends AbstractEntity
      * E-Mail Adress from the sender
      * @var string
      */
-    protected string $senderAddress;
+    protected string $senderAddress = '';
 
     /**
      * E-Mail Adress from the receiver
      * @var string
      */
-    protected string $receiverAddress;
+    protected string $receiverAddress = '';
 
     /**
      * Get subject of the E-Mail

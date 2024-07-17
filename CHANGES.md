@@ -1,3 +1,12 @@
+## Version 1.0.4
+- [BUGFIX] Upload Model: Set start value for receiverAddress and senderAddress
+- [BUGFIX] Reduces incoming $_FILES to the current, because we only support one file
+- [BUGFIX] GarbageCollector: getOriginalResource first before getOriginalFile
+
+## Version 1.0.3
+- [BUGFIX] min attribute not support on textfield in some TYPO3 versions
+- [BUGFIX] Only show set testdata, when we are not in Development mode
+
 ## Version 1.0.2
 - [BUGFIX] Remove placeholder attribute for select field
 

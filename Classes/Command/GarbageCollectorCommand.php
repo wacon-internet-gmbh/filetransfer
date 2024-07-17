@@ -88,7 +88,7 @@ class GarbageCollectorCommand extends Command
                     $deleteFile = true;
 
                     foreach ($uploads as $upload) {
-                        if ($upload->getAsset() && $upload->getAsset()->getOriginalFile()->getUid() == $file->getUid()) {
+                        if ($upload->getAsset() && $upload->getAsset()->getOriginalResource()->getOriginalFile()->getUid() == $file->getUid()) {
                             $deleteFile = false;
                             break;
                         }

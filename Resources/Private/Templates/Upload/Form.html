@@ -7,12 +7,14 @@
             <f:form.submit name="submit" class="btn btn-primary" value="{f:translate(key:'upload.form.submit.label', extensionName: 'filetransfer')}" />
         </div>
     </f:form>
-    <div class="alert alert-warning">
-        <h3>DEV MODE LINKS</h3>
-        <ul>
-            <li><f:link.action action="form" arguments="{testmode: '1'}">Set test data</f:link.action></li>
-        </ul>
-    </div>
+    <f:if condition="{testMode}">
+        <div class="alert alert-warning">
+            <h3>DEV MODE LINKS</h3>
+            <ul>
+                <li><f:link.action action="form" arguments="{testmode: '1'}">Set test data</f:link.action></li>
+            </ul>
+        </div>
+    </f:if>
     <f:asset.css identifier="filetransfer_fileupload_uploadform" href="EXT:filetransfer/Resources/Public/Css/uploadform.css" />
     <f:asset.script identifier="filetransfer_fileupload_{contentObjectData.uid}" type="module">
         import Fileupload from '@wacon/filetransfer/Fileupload.js'
