@@ -1,3 +1,6 @@
+## Version 1.0.6
+- [NOTICE] Change extension icon
+
 ## Version 1.0.5
 - [BUGFIX] Forgot Signature in FlexForm
 
