@@ -1,3 +1,6 @@
+## Version 1.1.1
+- [BUGFIX] tx_filetransfer_domain_model_upload Icon file extension
+
 ## Version 1.1.0
 - [FEATURE] Upload all types of file extensions
 - [FEATURE] Upload multiple files
