@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Service;
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
@@ -119,7 +119,6 @@ class FileUploadService
     /**
      * Upload all files, this is the $_FILES array
      * @param array $files
-     * @return void
      */
     public function upload(array $files)
     {
@@ -127,14 +126,14 @@ class FileUploadService
 
         if (count($this->uploadedFiles) == 1) {
             $this->uploadSingle(current($this->uploadedFiles));
-        }else {
+        } else {
             $zip = new \ZipArchive();
             $fileName = \uniqid('filetransfer_' . time() . '_');
             $zipFile = Environment::getPublicPath() . '/' . $this->storage->getConfiguration()['basePath'] . PathUtility::stripFirstForwardSlash($this->folder->getIdentifier()) . $fileName;
 
             if ($zip->open($zipFile, \ZipArchive::CREATE)) {
                 // if we have more than 1, then we need to zip it
-                foreach($this->uploadedFiles as $file) {
+                foreach ($this->uploadedFiles as $file) {
                     $zip->addFile($file['tmp_name'], $file['name']);
                 }
             }

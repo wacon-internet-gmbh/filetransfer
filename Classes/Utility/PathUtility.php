@@ -33,5 +33,3 @@ class PathUtility extends \TYPO3\CMS\Core\Utility\PathUtility
         return $string;
     }
 }
-
-
