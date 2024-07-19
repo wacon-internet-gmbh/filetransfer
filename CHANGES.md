@@ -1,3 +1,7 @@
+## Version 1.1.0
+- [FEATURE] Upload all types of file extensions
+- [FEATURE] Upload multiple files
+
 ## Version 1.0.6
 - [NOTICE] Change extension icon
 

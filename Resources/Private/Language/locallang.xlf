@@ -14,10 +14,10 @@
 				<source>Expire in 3 days</source>
 			</trans-unit>
 			<trans-unit id="form.upload.fileupload" resname="form.upload.fileupload">
-				<source>Add ZIP file</source>
+				<source>Add your files</source>
 			</trans-unit>
 			<trans-unit id="form.upload.dropzone" resname="form.upload.dropzone">
-				<source>Drag your ZIP file in this area or use the input field below</source>
+				<source>Drag your files in this area or use the input field below</source>
 			</trans-unit>
 			<trans-unit id="form.upload.dropZone.error.unsupported_type" resname="form.upload.dropZone.error.unsupported_type">
 				<source>The file is not supported. Please only upload zip, gzip or tar files.</source>

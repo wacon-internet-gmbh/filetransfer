@@ -78,10 +78,9 @@ final class UploadController extends ActionController
     public function uploadAction(Upload $upload, array $asset): ResponseInterface
     {
         try {
-            $asset = current($asset); // we only support one file
             $fileUploadService = GeneralUtility::makeInstance(FileUploadService::class);
             $fileUploadService->init($this->settings['upload']);
-            $fileUploadService->uploadSingle($asset);
+            $fileUploadService->upload($asset);
             $assetAsFile = $fileUploadService->getFirstAsset();
 
             if (!$assetAsFile) {
@@ -96,7 +95,7 @@ final class UploadController extends ActionController
 
             // then we can create a sys_file_reference
             $fileUploadService->createSysFileReference($upload, $assetAsFile, [
-                'title' => $asset['name'],
+                'title' => $assetAsFile->getName(),
             ]);
             $sysFileReference = $this->fileRepository->findByRelation('tx_filetransfer_domain_model_upload', 'asset', $upload->getUid());
 

@@ -20,6 +20,7 @@ namespace Wacon\Filetransfer\Service;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
@@ -29,6 +30,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use Wacon\Filetransfer\Domain\Model\Upload;
 use Wacon\Filetransfer\Exception\FileUploadException;
+use Wacon\Filetransfer\Utility\PathUtility;
 
 class FileUploadService
 {
@@ -55,6 +57,13 @@ class FileUploadService
      * @var ResourceStorage
      */
     protected ResourceStorage $storage;
+
+    /**
+     * We cache the uploaded files to
+     * get information for later use
+     * @var array
+     */
+    private $uploadedFiles = [];
 
     /**
      * Summary of __construct
@@ -104,6 +113,40 @@ class FileUploadService
 
         if (!$this->folder) {
             throw new FileUploadException('form.upload.fileuploadservice.folder_notfound');
+        }
+    }
+
+    /**
+     * Upload all files, this is the $_FILES array
+     * @param array $files
+     * @return void
+     */
+    public function upload(array $files)
+    {
+        $this->uploadedFiles = $files;
+
+        if (count($this->uploadedFiles) == 1) {
+            $this->uploadSingle(current($this->uploadedFiles));
+        }else {
+            $zip = new \ZipArchive();
+            $fileName = \uniqid('filetransfer_' . time() . '_');
+            $zipFile = Environment::getPublicPath() . '/' . $this->storage->getConfiguration()['basePath'] . PathUtility::stripFirstForwardSlash($this->folder->getIdentifier()) . $fileName;
+
+            if ($zip->open($zipFile, \ZipArchive::CREATE)) {
+                // if we have more than 1, then we need to zip it
+                foreach($this->uploadedFiles as $file) {
+                    $zip->addFile($file['tmp_name'], $file['name']);
+                }
+            }
+
+            $zip->close();
+
+            $newFile = $this->storage->getFileInFolder($fileName, $this->folder);
+
+            if ($newFile) {
+                $this->storage->renameFile($newFile, $newFile->getNameWithoutExtension() . '.zip');
+                $this->assets->attach($newFile);
+            }
         }
     }
 
@@ -171,11 +214,27 @@ class FileUploadService
 
     /**
      * Return the first uploaded asset, if any or null
-     * @return \TYPO3\CMS\Core\Resource\File|null
+     * @return File|null
      */
     public function getFirstAsset(): ?File
     {
         return $this->assets && $this->assets->count() > 0 ? $this->assets->offsetGet(0) : null;
+    }
+
+    /**
+     * Return the filename for given asset
+     * @param File $asset
+     * @return string
+     */
+    public function getFilenameForAsset(File $asset): string
+    {
+        foreach ($this->uploadedFiles as $file) {
+            if ($file['tmp_name'] == $asset->getName()) {
+                return $file['name'];
+            }
+        }
+
+        return '';
     }
 
     /**

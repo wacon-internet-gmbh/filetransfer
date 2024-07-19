@@ -68,7 +68,6 @@ return [
             'config' => [
                 'type' => 'file',
                 'maxitems' => 1,
-                'allowed' => 'zip,gz,gzip,tar',
             ],
         ],
         'validity_date' => [

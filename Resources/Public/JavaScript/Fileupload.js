@@ -46,7 +46,7 @@ export default class Fileupload {
 
       if (event.dataTransfer.items) {
         [...event.dataTransfer.items].forEach((item, i) => {
-          if (item.kind !== "file" || !cObj.isFileTypeSupported(item.type)) {
+          if (item.kind !== "file") {
             cObj.showError('unsupported_type');
             noErrors = false;const file = item.getAsFile();
             return;
@@ -54,7 +54,7 @@ export default class Fileupload {
         });
       }else {
         [...event.dataTransfer.files].forEach((file, i) => {
-          if (item.kind !== "file" || !cObj.isFileTypeSupported(item.type)) {
+          if (item.kind !== "file") {
             cObj.showError('unsupported_type');
             noErrors = false;const file = item.getAsFile();
             return;
