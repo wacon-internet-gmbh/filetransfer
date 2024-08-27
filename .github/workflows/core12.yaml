@@ -5,7 +5,7 @@ on: [ push, pull_request ]
 jobs:
   tests:
     name: v12
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       # This prevents cancellation of matrix job runs, if one/two already failed and let the
       # rest matrix jobs be executed anyway.
@@ -16,6 +16,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install Compose
+        uses: ndeloof/install-compose-action@v0.0.1
+        with:
+          version: v2.1.0 # defaults to 'latest'
+          legacy: true    # will also install in PATH as `docker-compose`
+      - run: docker-compose --version
 
       - name: Install testing system
         run: Build/Scripts/runTests.sh -t 12 -p ${{ matrix.php }}  -s ${{ matrix.composerInstall }}
