@@ -14,7 +14,7 @@ $config->setFinder(
         ->ignoreVCSIgnored(true)
         ->notPath('/^.Build\//')
         ->notPath('/^Build\/php-cs-fixer\/php-cs-fixer.php/')
-        ->notPath('/^Build\/Scripts\//')
+        ->notPath('/^Build\/Scripts\/runTests.sh/')
         ->notPath('/^Build\/phpunit\/(UnitTestsBootstrap|FunctionalTestsBootstrap).php/')
         ->notPath('/^Configuration\//')
         ->notPath('/^Documentation\//')
