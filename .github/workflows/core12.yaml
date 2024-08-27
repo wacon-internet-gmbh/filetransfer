@@ -17,11 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install docker-compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "Build/testing-docker/docker-compose.yaml"
-
       - name: Install testing system
         run: Build/Scripts/runTests.sh -t 12 -p ${{ matrix.php }}  -s ${{ matrix.composerInstall }}
 
