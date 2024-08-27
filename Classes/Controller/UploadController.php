@@ -90,6 +90,7 @@ final class UploadController extends ActionController
             // First add upload and commit to get uid
             $upload->setToken($this->tokenService->create($this->extensionKey . '_download_' . time()));
             $upload->calculateAndSetValidityDate();
+            $upload->setSignature($this->settings['signature']);
             $this->uploadRepository->add($upload);
             $this->uploadRepository->commit();
 

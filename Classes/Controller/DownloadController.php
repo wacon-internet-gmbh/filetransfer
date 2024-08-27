@@ -19,14 +19,48 @@ namespace Wacon\Filetransfer\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
+use Wacon\Filetransfer\Service\MailService;
 
 final class DownloadController extends ActionController
 {
     public function __construct(
         private readonly UploadRepository $uploadRepository
     ) {}
+
+    /**
+     * Show the success message
+     * @param string $token
+     * @return never|ResponseInterface
+     * @throws ImmediateResponseException
+     */
+    public function downloadpageAction($token)
+    {
+        $download = $this->uploadRepository->findByToken($token)->current();
+
+        if (!$download || $download->getDownloadLimit() <= 0) {
+            return $this->redirect('expired');
+        }
+
+        // render download page
+        $this->view->assign('downloadLink', $this->uriBuilder
+        ->reset()
+        ->setCreateAbsoluteUri(true)
+        ->setNoCache(true)
+        ->uriFor(
+            'download',
+            [
+                'token' => $download->getToken(),
+            ],
+            'Download',
+            'filetransfer',
+            'download'
+        ));
+
+        return $this->htmlResponse();
+    }
 
     /**
      * Show the success message
@@ -47,10 +81,21 @@ final class DownloadController extends ActionController
         $this->uploadRepository->update($download);
         $this->uploadRepository->commit();
 
+        // Send infomail to sender
+        try {
+            $mailService = GeneralUtility::makeInstance(MailService::class);
+            $mailService->sendToSender($download);
+        }catch(\Exception $e) {
+            // nothing
+        }
+
         // Download asset
         $resourceFile = $download->getAsset()->getOriginalResource();
         $response = $resourceFile->getStorage()->streamFile($resourceFile->getOriginalFile(), true, $resourceFile->getTitle(), $resourceFile->getMimeType());
-        throw new ImmediateResponseException($response);
+        throw new ImmediateResponseException(
+            $response->withHeader('Cache-Control', 'no-cache, no-store')
+        );
+
     }
 
     /**

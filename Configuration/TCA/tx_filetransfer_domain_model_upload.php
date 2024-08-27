@@ -44,6 +44,15 @@ return [
                 'required' => true,
             ],
         ],
+        'signature' => [
+            'label' => 'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.signature',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'eval' => 'trim',
+                'required' => true,
+            ],
+        ],
         'token' => [
             'label' => 'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.token',
             'exclude' => true,

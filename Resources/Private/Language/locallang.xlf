@@ -45,6 +45,16 @@
 			<trans-unit id="mail.download.downloadlink" resname="mail.download.downloadlink">
 				<source>Download file</source>
 			</trans-unit>
+			<trans-unit id="mail.admindownloadinfo.salutation" resname="mail.admindownloadinfo.salutation">
+				<source>Dear admin,</source>
+			</trans-unit>
+			<trans-unit id="mail.admindownloadinfo.intro" resname="mail.admindownloadinfo.intro">
+				<source>your upload was just downloaded from the user.</source>
+			</trans-unit>
+
+			<trans-unit id="downloadpage.intro" resname="downloadpage.intro">
+				<source>Click on the link below to start the download</source>
+			</trans-unit>
         </body>
     </file>
 </xliff>

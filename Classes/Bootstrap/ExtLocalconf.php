@@ -52,10 +52,10 @@ class ExtLocalconf extends Base
             $this->getExtensionKeyAsNamespace(),
             'Download',
             [
-                DownloadController::class => 'download,error,expired',
+                DownloadController::class => 'download,downloadpage,error,expired',
             ],
             [
-                DownloadController::class => 'download',
+                DownloadController::class => 'download,downloadpage',
             ]
         );
     }

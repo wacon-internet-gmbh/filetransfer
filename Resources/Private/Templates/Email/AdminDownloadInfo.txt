@@ -1,0 +1,7 @@
+<f:translate key="mail.admindownloadinfo.salutation" extensionName="filetransfer" />
+
+<f:translate key="mail.admindownloadinfo.intro" extensionName="filetransfer" />
+
+<f:translate key="LLL:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.receiver_address" extensionName="filetransfer" />: {upload.receiverAddress}
+<f:translate key="LLL:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit" extensionName="filetransfer" />: {upload.downloadLimit}
+<f:format.stripTags>{signature}</f:format.stripTags>

@@ -1,0 +1,17 @@
+<p><f:translate key="mail.admindownloadinfo.salutation" extensionName="filetransfer" /></p>
+<p><f:translate key="mail.admindownloadinfo.intro" extensionName="filetransfer" /></p>
+<table>
+    <thead>
+        <tr>
+            <td style="font-weight: bold;"><f:translate key="LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.receiver_address" extensionName="filetransfer" /></td>
+            <td style="font-weight: bold; text-align: center;"><f:translate key="LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit" extensionName="filetransfer" /></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{upload.receiverAddress}</td>
+            <td style="text-align: center;">{upload.downloadLimit}</td>
+        </tr>
+    </tbody>
+</table>
+<f:format.html>{signature}</f:format.html>

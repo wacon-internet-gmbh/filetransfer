@@ -36,6 +36,12 @@ class Upload extends AbstractEntity
     protected string $message = '';
 
     /**
+     * Signature of the E-Mail
+     * @var string
+     */
+    protected string $signature = '';
+
+    /**
      * Token for the security link to download
      * @var string
      */
@@ -323,5 +329,29 @@ class Upload extends AbstractEntity
         $this->message = 'Lorem Ipsum Message';
         $this->validityDurationInDays = 3;
         $this->downloadLimit = 1;
+    }
+
+    /**
+     * Get signature of the E-Mail
+     *
+     * @return  string
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+
+    /**
+     * Set signature of the E-Mail
+     *
+     * @param  string  $signature  Signature of the E-Mail
+     *
+     * @return  self
+     */
+    public function setSignature(string $signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
     }
 }

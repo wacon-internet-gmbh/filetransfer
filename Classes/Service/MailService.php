@@ -58,9 +58,27 @@ class MailService
             ->subject($upload->getSubject())
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('Download')
-            ->assign('signature', $this->settings['signature'])
+            ->assign('signature', $upload->getSignature())
             ->assign('upload', $upload)
             ->assign('downloadUri', $this->createDownloadUri($upload));
+        GeneralUtility::makeInstance(MailerInterface::class)->send($email);
+    }
+
+    /**
+     * Send mail to sender
+     * @param \Wacon\Filetransfer\Domain\Model\Upload $upload
+     */
+    public function sendToSender(Upload $upload)
+    {
+        $email = new FluidEmail();
+        $email
+            ->to($upload->getSenderAddress())
+            ->from(new Address($upload->getSenderAddress()))
+            ->subject($upload->getSubject())
+            ->format(FluidEmail::FORMAT_BOTH)
+            ->setTemplate('AdminDownloadInfo')
+            ->assign('signature', $upload->getSignature())
+            ->assign('upload', $upload);
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
     }
 
@@ -76,7 +94,7 @@ class MailService
                 ->setTargetPageUid((int)$this->settings['downloadPid'])
                 ->setCreateAbsoluteUri(true)
                 ->uriFor(
-                    'download',
+                    'downloadpage',
                     [
                         'token' => $upload->getToken(),
                     ],
