@@ -17,12 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Compose
-        uses: ndeloof/install-compose-action@v0.0.1
+      - name: Install docker-compose
+        uses: hoverkraft-tech/compose-action@v0.0.0
         with:
-          version: v2.1.0 # defaults to 'latest'
-          legacy: true    # will also install in PATH as `docker-compose`
-      - run: docker-compose --version
+          compose-file: "Build/testing-docker/docker-compose.yaml"
 
       - name: Install testing system
         run: Build/Scripts/runTests.sh -t 12 -p ${{ matrix.php }}  -s ${{ matrix.composerInstall }}
