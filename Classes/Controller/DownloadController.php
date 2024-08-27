@@ -85,7 +85,7 @@ final class DownloadController extends ActionController
         try {
             $mailService = GeneralUtility::makeInstance(MailService::class);
             $mailService->sendToSender($download);
-        }catch(\Exception $e) {
+        } catch(\Exception $e) {
             // nothing
         }
 
@@ -95,7 +95,6 @@ final class DownloadController extends ActionController
         throw new ImmediateResponseException(
             $response->withHeader('Cache-Control', 'no-cache, no-store')
         );
-
     }
 
     /**
