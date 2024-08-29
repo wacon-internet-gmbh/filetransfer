@@ -9,7 +9,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'versioningWS' => false,
-        'iconfile' => 'EXT:filetransfer/Resources/Public/Icons/Extension.png',
+        'iconfile' => 'EXT:filetransfer/Resources/Public/Icons/Extension.svg',
         'origUid' => 't3_origuid',
         'adminOnly' => true,
     ],
