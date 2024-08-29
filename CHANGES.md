@@ -2,6 +2,7 @@
 - [FEATURE] Add downloadpage with downloadlink as step between mail link and download. This is useful to avoid problems with mailserver firewalls
 - [FEATURE] Send Mail to Admin, when downloaded
 - [NOTICE] Replace Extension.png with new svg file
+- [NOTICE] Add PHP 8.1 Support
 
 ## Version 1.1.1
 - [BUGFIX] tx_filetransfer_domain_model_upload Icon file extension
