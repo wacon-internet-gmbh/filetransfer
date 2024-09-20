@@ -55,7 +55,6 @@ class UploadQueryBuilder extends BaseQueryBuilder
             } else {
                 $constraints[] = $queryBuilder->expr()->eq($name, $value);
             }
-
         }
 
         $queryBuilder->where(...$constraints);

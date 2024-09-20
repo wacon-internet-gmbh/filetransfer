@@ -86,7 +86,7 @@ final class DownloadController extends ActionController
             $mailService = GeneralUtility::makeInstance(MailService::class);
             $mailService->init($this->settings, $this->request);
             $mailService->sendToSender($download);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // nothing
         }
 

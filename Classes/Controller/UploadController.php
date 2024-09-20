@@ -108,7 +108,7 @@ final class UploadController extends ActionController
             $mailService = GeneralUtility::makeInstance(MailService::class);
             $mailService->init($this->settings, $this->request);
             $mailService->send($upload);
-        } catch(FileUploadException $e) {
+        } catch (FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);
 
             // We need to do this, because I only set translation keys inside the FileUploadService
