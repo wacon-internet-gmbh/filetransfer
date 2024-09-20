@@ -25,6 +25,19 @@ class UploadQueryBuilder extends BaseQueryBuilder
     const DB_TABLE = 'tx_filetransfer_domain_model_upload';
 
     /**
+     * findByAllExpired
+     * @return \Doctrine\DBAL\Result
+     */
+    public function findAll(): Result
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::DB_TABLE);
+        return $queryBuilder
+            ->select('*')
+            ->from(self::DB_TABLE)
+            ->executeQuery();
+    }
+
+    /**
      * FindBy properties
      * @param array $properties
      * @return \Doctrine\DBAL\Result
@@ -48,6 +61,21 @@ class UploadQueryBuilder extends BaseQueryBuilder
         $queryBuilder->where(...$constraints);
 
         return $queryBuilder->executeQuery();
+    }
+
+    /**
+     * findByAllExpired
+     * @return \Doctrine\DBAL\Result
+     */
+    public function findByAllExpired(): Result
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::DB_TABLE);
+        return $queryBuilder
+            ->select('*')
+            ->from(self::DB_TABLE)
+            ->where(
+                $queryBuilder->expr()->lt('validity_date', (new \DateTime())->getTimestamp())
+            )->executeQuery();
     }
 
     /**

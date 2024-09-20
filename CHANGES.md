@@ -1,6 +1,6 @@
 ## Version 2.0.0
-- [WIP] Migrate DeleteExpiredCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore
-- [WIP] Migrate GarbageCollectorCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore
+- [FEATURE] Migrate DeleteExpiredCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore
+- [FEATURE] Migrate GarbageCollectorCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore
 - [FEATURE] Add GitHub action for TYPO3 13
 - [FEATURE] Set Request for FluidEmail and UriBuilder in MailService
 - [FEATURE] Migrate DeleteDownloadedCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore

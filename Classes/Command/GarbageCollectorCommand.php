@@ -26,6 +26,7 @@ use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Wacon\Filetransfer\Domain\QueryBuilder\UploadQueryBuilder;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 
 class GarbageCollectorCommand extends Command
@@ -33,7 +34,7 @@ class GarbageCollectorCommand extends Command
     public function __construct(
         private readonly StorageRepository $storageRepository,
         private readonly FileRepository $fileRepository,
-        private readonly UploadRepository $uploadRepository
+        private readonly UploadQueryBuilder $uploadQueryBuilder
     ) {
         parent::__construct();
     }
@@ -67,8 +68,7 @@ class GarbageCollectorCommand extends Command
     {
         $amountOfFiles = 0;
         $pids = GeneralUtility::intExplode(',', $input->getArgument('pids'), true);
-        $this->initRepositories();
-        $uploads = $this->uploadRepository->findAll();
+        $uploads = $this->uploadQueryBuilder->findAll()->fetchAllAssociative();
 
         foreach ($pids as $pid) {
             $storage = $this->storageRepository->getStorageObject((int)$pid);
@@ -89,7 +89,8 @@ class GarbageCollectorCommand extends Command
                     $deleteFile = true;
 
                     foreach ($uploads as $upload) {
-                        if ($upload->getAsset() && $upload->getAsset()->getOriginalResource()->getOriginalFile()->getUid() == $file->getUid()) {
+                        $asset = $this->getAsset($upload);
+                        if ($asset && $asset->getOriginalFile()->getUid() == $file->getUid()) {
                             $deleteFile = false;
                             break;
                         }
@@ -110,12 +111,14 @@ class GarbageCollectorCommand extends Command
     }
 
     /**
-     * Init repositories
+     * Get asset
+     * @param array $upload
+     * @return \TYPO3\CMS\Core\Resource\FileReference|bool
      */
-    private function initRepositories()
+    private function getAsset(array $upload)
     {
-        $querySettings = $this->uploadRepository->createQuery()->getQuerySettings();
-        $querySettings->setRespectStoragePage(false);
-        $this->uploadRepository->setDefaultQuerySettings($querySettings);
+        $assets = $this->fileRepository->findByRelation(UploadQueryBuilder::DB_TABLE, 'asset', $upload['uid']);
+
+        return is_array($assets) ? current($assets) : $assets;
     }
 }
