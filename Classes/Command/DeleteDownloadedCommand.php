@@ -22,13 +22,19 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Wacon\Filetransfer\Domain\QueryBuilder\Upload;
+use Wacon\Filetransfer\Domain\QueryBuilder\UploadQueryBuilder;
 use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 
 class DeleteDownloadedCommand extends Command
 {
     public function __construct(
-        private readonly UploadRepository $uploadRepository
+        private readonly UploadQueryBuilder $uploadQueryBuilder,
+        private readonly FileRepository $fileRepository
     ) {
         parent::__construct();
     }
@@ -56,27 +62,21 @@ class DeleteDownloadedCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $amountOfFiles = 0;
-        $this->initRepositories(GeneralUtility::intExplode(',', $input->getArgument('pids'), true));
-        $uploads = $this->uploadRepository->findBy(['download_limit' => 0]);
-        $amountOfFiles = count($uploads);
+        $uploads = $this->uploadQueryBuilder->findBy(['download_limit' => 0, 'pid' => GeneralUtility::intExplode(',', $input->getArgument('pids'), true)]);
+        $amountOfFiles = $uploads->rowCount();
+        $uploads = $uploads->fetchAllAssociative();
 
         foreach ($uploads as $upload) {
-            /**
-             * @var Upload $upload
-             */
             // Delete file
-            $asset = $upload->getAsset();
+            $asset = $this->getAsset($upload);
 
             if ($asset) {
-                $asset->getOriginalResource()->getOriginalFile()->delete();
+                $asset->getOriginalFile()->delete();
+                $asset->delete();
             }
 
             // Delete record
-            $this->uploadRepository->remove($upload);
-        }
-
-        if ($amountOfFiles > 0) {
-            $this->uploadRepository->commit();
+            $this->uploadQueryBuilder->remove($upload);
         }
 
         // Render answer
@@ -87,13 +87,14 @@ class DeleteDownloadedCommand extends Command
     }
 
     /**
-     * Init repositories
-     * @param array $pids
+     * Get asset
+     * @param array $upload
+     * @return FileReference|bool
      */
-    private function initRepositories(array $pids)
+    private function getAsset(array $upload)
     {
-        $querySettings = $this->uploadRepository->createQuery()->getQuerySettings();
-        $querySettings->setStoragePageIds($pids);
-        $this->uploadRepository->setDefaultQuerySettings($querySettings);
+        $assets = $this->fileRepository->findByRelation(UploadQueryBuilder::DB_TABLE, 'asset', $upload['uid']);
+
+        return is_array($assets) ? current($assets) : $assets;
     }
 }
