@@ -51,11 +51,11 @@ class DeleteDownloadedCommand extends Command
      *
      * @param InputInterface $input
      * @param OutputInterface $output
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $amountOfFiles = 0;
-
         $this->initRepositories(GeneralUtility::intExplode(',', $input->getArgument('pids'), true));
         $uploads = $this->uploadRepository->findBy(['download_limit' => 0]);
         $amountOfFiles = count($uploads);

@@ -21,6 +21,7 @@ use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use Wacon\Filetransfer\Domain\Model\Upload;
 
@@ -32,6 +33,12 @@ class MailService
      */
     protected array $settings = [];
 
+    /**
+     * Current TYPO3 Request
+     * @var RequestInterface
+     */
+    protected RequestInterface $request;
+
     public function __construct(
         private readonly UriBuilder $uriBuilder,
     ) {}
@@ -40,9 +47,10 @@ class MailService
      * Init the mail service
      * @param array $settings
      */
-    public function init(array $settings)
+    public function init(array $settings, RequestInterface $request)
     {
         $this->settings = $settings;
+        $this->request = $request;
     }
 
     /**
@@ -53,6 +61,7 @@ class MailService
     {
         $email = new FluidEmail();
         $email
+            ->setRequest($this->request)
             ->to($upload->getReceiverAddress())
             ->from(new Address($upload->getSenderAddress()))
             ->subject($upload->getSubject())
@@ -72,6 +81,7 @@ class MailService
     {
         $email = new FluidEmail();
         $email
+            ->setRequest($this->request)
             ->to($upload->getSenderAddress())
             ->from(new Address($upload->getSenderAddress()))
             ->subject($upload->getSubject())
@@ -91,6 +101,7 @@ class MailService
     {
         return $this->uriBuilder
                 ->reset()
+                ->setRequest($this->request)
                 ->setTargetPageUid((int)$this->settings['downloadPid'])
                 ->setCreateAbsoluteUri(true)
                 ->uriFor(

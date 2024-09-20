@@ -61,8 +61,9 @@ class GarbageCollectorCommand extends Command
      *
      * @param InputInterface $input
      * @param OutputInterface $output
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $amountOfFiles = 0;
         $pids = GeneralUtility::intExplode(',', $input->getArgument('pids'), true);

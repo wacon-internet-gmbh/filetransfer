@@ -1,3 +1,8 @@
+## Version 2.0.0
+- [FEATURE] Add GitHub action for TYPO3 13
+- [FEATURE] Set Request for FluidEmail and UriBuilder in MailService
+- [BUGFIX] Return value int for Symfony Command
+
 ## Version 1.2.0
 - [FEATURE] Add downloadpage with downloadlink as step between mail link and download. This is useful to avoid problems with mailserver firewalls
 - [FEATURE] Send Mail to Admin, when downloaded

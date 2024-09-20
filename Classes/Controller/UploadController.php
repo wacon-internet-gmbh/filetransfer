@@ -106,7 +106,7 @@ final class UploadController extends ActionController
 
             //Send Mail
             $mailService = GeneralUtility::makeInstance(MailService::class);
-            $mailService->init($this->settings);
+            $mailService->init($this->settings, $this->request);
             $mailService->send($upload);
         } catch(FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);

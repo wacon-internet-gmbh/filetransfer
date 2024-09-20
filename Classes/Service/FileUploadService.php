@@ -153,14 +153,25 @@ class FileUploadService
      * Does the actual upload, which means
      * 1. Move uploaded file with correct name into defined folder
      * 2. Make sure filename is unique
-     * @param array $file ($_FILES, when uploaded single file)
+     * @param \TYPO3\CMS\Core\Http\UploadedFile || array $file ($_FILES, when uploaded single file)
      */
-    public function uploadSingle(array $file)
+    public function uploadSingle($file)
     {
+        $tmpName = '';
+        $name = '';
+
+        if (is_object($file)) {
+            $tmpName = $file->getTemporaryFileName();
+            $name = $file->getClientFilename();
+        } else {
+            $tmpName = $file['tmp_name'];
+            $name = $file['name'];
+        }
+
         $newFile = $this->storage->addFile(
-            $file['tmp_name'],
+            $tmpName,
             $this->folder,
-            $this->createUniqueFileName($file['name']) . $this->getFileExtension($file['name'])
+            $this->createUniqueFileName($name) . $this->getFileExtension($name)
         );
 
         $this->assets->attach($newFile);
