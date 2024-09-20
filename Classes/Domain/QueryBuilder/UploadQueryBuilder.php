@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Database\Connection;
 
 class UploadQueryBuilder extends BaseQueryBuilder
 {
-    const DB_TABLE = 'tx_filetransfer_domain_model_upload';
+    public const DB_TABLE = 'tx_filetransfer_domain_model_upload';
 
     /**
      * findByAllExpired
@@ -49,7 +49,7 @@ class UploadQueryBuilder extends BaseQueryBuilder
             ->select('*')
             ->from(self::DB_TABLE);
 
-        foreach($properties as $name => $value) {
+        foreach ($properties as $name => $value) {
             if (is_array($value)) {
                 $constraints[] = $queryBuilder->expr()->in($name, $value);
             } else {

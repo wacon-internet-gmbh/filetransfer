@@ -27,7 +27,6 @@ use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wacon\Filetransfer\Domain\QueryBuilder\UploadQueryBuilder;
-use Wacon\Filetransfer\Domain\Repository\UploadRepository;
 
 class GarbageCollectorCommand extends Command
 {
@@ -77,7 +76,7 @@ class GarbageCollectorCommand extends Command
                 $folder = $storage->getFolder($input->getArgument('folder'));
 
                 if (!$folder) {
-                    return false;
+                    return 0;
                 }
 
                 $files = $storage->getFilesInFolder($storage->getFolder($input->getArgument('folder')));
