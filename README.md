@@ -1,5 +1,5 @@
 # TYPO3 Extension: filetransfer
-TYPO3 Extension to send downloadables via email secury and privacy complaint.
+The filetransfer extension enables the secure transfer of files from your own web server ("on-premise"). This eliminates the need for email transfers, which can be challenging for large files and pose security risks for sensitive data. As an alternative to WeTransfer, organizations can use this extension to present themselves in a particularly security-conscious and professional manner.
 
 ## 2 Usage
 
