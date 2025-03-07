@@ -1,3 +1,8 @@
+## Version 2.0.1
+- [CHANGE] Disable autocomplete on receiver email
+- [NOTICE] Add example Apache file to block direct file access for file storage
+- [NOTICE] Add tipps for recommended setup in README.md
+
 ## Version 2.0.0
 - [FEATURE] Migrate DeleteExpiredCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore
 - [FEATURE] Migrate GarbageCollectorCommand to QueryBuilder, because Repository is not possible in TYPO3 13 anymore

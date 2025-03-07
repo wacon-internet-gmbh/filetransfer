@@ -1,30 +1,46 @@
 <div class="mb-3 upload-asset">
     <div class="upload-dropzone mb-3">
-        <f:format.html><f:translate key="form.upload.dropzone" extensionName="filetransfer" /></f:format.html>
+        <f:format.html>
+            <f:translate key="form.upload.dropzone" extensionName="filetransfer" />
+        </f:format.html>
     </div>
     <div class="upload-dropzone--error-unsupported-type d-none mb-3">
         <f:translate key="form.upload.dropZone.error.unsupported_type" extensionName="filetransfer" />
     </div>
-    <f:form.upload name="asset" class="form-control upload-dropzone-input" additionalAttributes="{required: 'true'}" multiple="1"/>
+    <f:form.upload name="asset" class="form-control upload-dropzone-input" additionalAttributes="{required: 'true'}"
+        multiple="1" />
 </div>
 <div class="mb-3 upload-senderaddress">
-    <f:form.textfield property="senderAddress" type="email" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.sender_address')}" />
+    <f:form.textfield property="senderAddress" type="email" class="form-control" required="true"
+        placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.sender_address')}" />
 </div>
 <div class="mb-3 upload-receiveraddress">
-    <f:form.textfield property="receiverAddress" type="email" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.receiver_address')}" />
+    <f:form.textfield property="receiverAddress" type="email" class="form-control" required="true" auto
+        placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.receiver_address')}"
+        additionalAttributes="{autocomplete: 'off'}" />
 </div>
 <div class="mb-3 upload-subject">
-    <f:form.textfield property="subject" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.subject')}" />
+    <f:form.textfield property="subject" class="form-control" required="true"
+        placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.subject')}" />
 </div>
 <div class="mb-3 upload-message">
-    <f:form.textarea property="message" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.message')}" />
+    <f:form.textarea property="message" class="form-control" required="true"
+        placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.message')}" />
 </div>
 <div class="mb-3 upload-validityduration">
     <f:form.select property="validityDurationInDays" class="form-select" required="true">
-        <f:form.select.option value="3"><f:translate key="form.upload.validity_duration.I.3days" extensionName="filetransfer" /></f:form.select.option>
+        <f:form.select.option value="3">
+            <f:translate key="form.upload.validity_duration.I.3days" extensionName="filetransfer" />
+        </f:form.select.option>
     </f:form.select>
 </div>
 <div class="mb-3 upload-downloadedlimit">
-    <label for="downloadLimit"><f:translate key="LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit" extensionName="filetransfer" /></label>
-    <f:form.textfield id="downloadLimit" property="downloadLimit" type="number" additionalAttributes="{min: '1'}" class="form-control" required="true" placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit')}" />
+    <label for="downloadLimit">
+        <f:translate
+            key="LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit"
+            extensionName="filetransfer" />
+    </label>
+    <f:form.textfield id="downloadLimit" property="downloadLimit" type="number" additionalAttributes="{min: '1'}"
+        class="form-control" required="true"
+        placeholder="{f:translate(key:'LLL:EXT:filetransfer/Resources/Private/Language/locallang_db.xlf:tx_filetransfer_domain_model_upload.download_limit')}" />
 </div>
