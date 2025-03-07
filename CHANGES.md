@@ -1,3 +1,6 @@
+## Version 2.0.2
+- [BUGFIX] HTML Error on receiver email
+
 ## Version 2.0.1
 - [CHANGE] Disable autocomplete on receiver email
 - [NOTICE] Add example Apache file to block direct file access for file storage
