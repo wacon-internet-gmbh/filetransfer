@@ -1,3 +1,6 @@
+## Version 2.0.3
+- [BUGFIX] GarbageCollector dont delete .htaccess and .htpassd files
+
 ## Version 2.0.2
 - [BUGFIX] HTML Error on receiver email
 

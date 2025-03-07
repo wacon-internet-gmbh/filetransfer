@@ -82,6 +82,10 @@ class GarbageCollectorCommand extends Command
                 $files = $storage->getFilesInFolder($storage->getFolder($input->getArgument('folder')));
 
                 foreach ($files as $file) {
+                    if ($file->getExtension() == 'htaccess' || $file->getExtension() == 'htpasswd') {
+                        continue;
+                    }
+
                     /**
                      * @var File $file
                      */
