@@ -30,6 +30,10 @@
 			<trans-unit id="tx_filetransfer_domain_model_upload.validity_date" resname="tx_filetransfer_domain_model_upload.validity_date">
 				<source>Validity date</source>
 			</trans-unit>
+
+			<trans-unit id="fe_users.mail_signature" resname="fe_users.mail_signature">
+				<source>Mail Signature</source>
+			</trans-unit>
         </body>
     </file>
 </xliff>

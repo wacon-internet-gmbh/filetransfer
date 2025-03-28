@@ -20,8 +20,6 @@ Download and install the [extension][1] with the extension manager module.
 
 ## 3 Todos
 - Upload Form Server Validation
-- Prefill form with logged in user data
-- Extend fe_user to set its own signature
 
 ## 4 Changelog
 see [CHANGES.md](CHANGES.md)

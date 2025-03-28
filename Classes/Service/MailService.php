@@ -39,6 +39,12 @@ class MailService
      */
     protected RequestInterface $request;
 
+    /**
+     * Current fe_user record
+     * @var array
+     */
+    protected array $feuser = [];
+
     public function __construct(
         private readonly UriBuilder $uriBuilder,
     ) {}
@@ -67,7 +73,7 @@ class MailService
             ->subject($upload->getSubject())
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('Download')
-            ->assign('signature', $upload->getSignature())
+            ->assign('signature', !empty($this->feuser) && !empty($this->feuser['mail_signature']) ? $this->feuser['mail_signature'] : $upload->getSignature())
             ->assign('upload', $upload)
             ->assign('downloadUri', $this->createDownloadUri($upload));
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
@@ -114,4 +120,28 @@ class MailService
                     'download'
                 );
     }
+
+	/**
+	 * Get current fe_user record
+	 *
+	 * @return array
+	 */
+	public function getFeuser(): array
+	{
+		return $this->feuser;
+	}
+
+	/**
+	 * Set current fe_user record
+	 *
+	 * @param array  $feuser
+	 *
+	 * @return self
+	 */
+	public function setFeuser(array $feuser): self
+	{
+		$this->feuser = $feuser;
+
+		return $this;
+	}
 }

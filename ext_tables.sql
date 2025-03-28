@@ -13,3 +13,7 @@ CREATE TABLE tx_filetransfer_domain_model_upload (
 	KEY token(token),
 	KEY download_limit(download_limit),
 );
+
+CREATE TABLE fe_users (
+	mail_signature MEDIUMTEXT DEFAULT '' NOT NULL
+);

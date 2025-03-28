@@ -1,3 +1,7 @@
+## Version 2.1.0
+- [FEATURE] Extend fe_user to set its own mail_signature
+- [FEATURE] Prefill upload form with fe_user data, if login session is available
+
 ## Version 2.0.3
 - [BUGFIX] GarbageCollector dont delete .htaccess and .htpassd files
 

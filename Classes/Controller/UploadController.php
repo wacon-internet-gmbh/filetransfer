@@ -54,8 +54,16 @@ final class UploadController extends ActionController
             $upload = new Upload();
         }
 
+        // check if we want to add test data
         if ($this->request->hasArgument('testmode') && $this->request->getArgument('testmode') == '1') {
             $upload->setTestData();
+        }
+
+        // check if feuser login session exists
+        if ($feuser = $this->request->getAttribute('frontend.user')->user) {
+            if (!empty($feuser['email'])) {
+                $upload->setSenderAddress($feuser['email']);
+            }
         }
 
         $this->pageRenderer->getJavaScriptRenderer()->addJavaScriptModuleInstruction(
@@ -107,6 +115,14 @@ final class UploadController extends ActionController
             //Send Mail
             $mailService = GeneralUtility::makeInstance(MailService::class);
             $mailService->init($this->settings, $this->request);
+
+            // check if feuser login session exists
+            if ($feuser = $this->request->getAttribute('frontend.user')->user) {
+                if (!empty($feuser['email'])) {
+                    $mailService->setFeuser($feuser);
+                }
+            }
+
             $mailService->send($upload);
         } catch (FileUploadException $e) {
             $translatedMessage = LocalizationUtility::translate($e->getMessage(), $this->extensionKey);
