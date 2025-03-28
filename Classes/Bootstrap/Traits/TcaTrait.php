@@ -432,7 +432,7 @@ trait TcaTrait
         $default = [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => ['type' => 'language']
+            'config' => ['type' => 'language'],
         ];
 
         if (!empty($additionalConfig)) {
