@@ -47,7 +47,7 @@ trait TcaTrait
             'config' => [
                 'type' => 'datetime',
                 'size' => $size,
-                'readOnly' => 1
+                'readOnly' => 1,
             ],
         ];
 
@@ -162,7 +162,7 @@ trait TcaTrait
                 'type' => 'input',
                 'size' => $size,
                 'eval' => 'trim',
-                'required' => $required ? 1 : 0
+                'required' => $required ? 1 : 0,
             ],
         ];
 
@@ -187,7 +187,7 @@ trait TcaTrait
             'label' => $label,
             'config' => [
                 'type' => 'email',
-            ]
+            ],
         ];
 
         if (!empty($additionalConfig)) {
@@ -213,8 +213,8 @@ trait TcaTrait
             'config' => [
                 'type' => 'number',
                 'size' => $size,
-                'format' => 'decimal'
-            ]
+                'format' => 'decimal',
+            ],
         ];
 
         if (!empty($additionalConfig)) {
@@ -384,7 +384,7 @@ trait TcaTrait
                         'label' => '',
                     ],
                 ],
-                'required' => $required ? 1 : 0
+                'required' => $required ? 1 : 0,
             ],
         ];
 
@@ -411,7 +411,7 @@ trait TcaTrait
             'config' => [
                 'type' => 'json',
                 'eval' => 'trim',
-                'required' => $required ? 1 : 0
+                'required' => $required ? 1 : 0,
             ],
         ];
 
@@ -539,7 +539,7 @@ trait TcaTrait
             'label' => $label,
             'config' => [
                 'type' => 'link',
-                'allowedTypes' => self::$COMMON_TYPES_LINK
+                'allowedTypes' => self::$COMMON_TYPES_LINK,
             ],
         ];
 

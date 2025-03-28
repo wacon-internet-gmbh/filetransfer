@@ -121,27 +121,27 @@ class MailService
                 );
     }
 
-	/**
-	 * Get current fe_user record
-	 *
-	 * @return array
-	 */
-	public function getFeuser(): array
-	{
-		return $this->feuser;
-	}
+    /**
+     * Get current fe_user record
+     *
+     * @return array
+     */
+    public function getFeuser(): array
+    {
+        return $this->feuser;
+    }
 
-	/**
-	 * Set current fe_user record
-	 *
-	 * @param array  $feuser
-	 *
-	 * @return self
-	 */
-	public function setFeuser(array $feuser): self
-	{
-		$this->feuser = $feuser;
+    /**
+     * Set current fe_user record
+     *
+     * @param array  $feuser
+     *
+     * @return self
+     */
+    public function setFeuser(array $feuser): self
+    {
+        $this->feuser = $feuser;
 
-		return $this;
-	}
+        return $this;
+    }
 }
