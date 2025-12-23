@@ -1,3 +1,6 @@
+## Version 3.0.1
+- [BUGFIX] Fix Nullable argument
+
 ## Version 3.0.0
 - [IMPORTANT] LIVE Switch upgrade-v14
 

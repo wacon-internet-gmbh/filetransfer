@@ -48,7 +48,7 @@ final class UploadController extends ActionController
      * @param Upload $upload
      * @return ResponseInterface
      */
-    public function formAction(Upload $upload = null): ResponseInterface
+    public function formAction(?Upload $upload): ResponseInterface
     {
         if (!$upload) {
             $upload = new Upload();

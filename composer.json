@@ -3,7 +3,7 @@
     "type": "typo3-cms-extension",
     "description": "TYPO3 Extension to send downloadables via email secury and privacy complaint.",
     "license": "GPL-2.0-or-later",
-	"version": "3.0.0",
+	"version": "3.0.1",
     "require": {
         "php": ">= 8.2 < 8.5",
         "typo3/cms-backend": "^13.4 || ^14.0",
