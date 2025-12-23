@@ -1,0 +1,47 @@
+categories:
+  Filetransfer:
+    label: 'Filetransfer'
+  Filetransfer.templates:
+    label: 'Templates'
+    parent: Filetransfer
+  Filetransfer.upload:
+    label: 'Upload'
+    parent: Filetransfer
+
+settings:
+  filetransfer.templates.templateRootPath:  # (5)
+    label: 'Templates' # (3)
+    category: Filetransfer.templates # (2)
+    description: 'Path to template root'  # (4)
+    type: string  # (6)
+    default: 'EXT:filetransfer/Resources/Private/Templates/'  # (7) + (8)
+  filetransfer.templates.partialRootPath:
+    label: 'Partials'
+    category: Filetransfer.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:filetransfer/Resources/Private/Partials/'
+  filetransfer.templates.layoutRootPath:
+    label: 'Layouts'
+    category: Filetransfer.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:filetransfer/Resources/Private/Layouts/'
+  filetransfer.templates.includeUtilities:
+    label: 'Include Utility Templates'
+    category: Filetransfer.templates
+    description: 'Whether to include utility.css with basic bootstrap definitions'
+    type: bool
+    default: true
+  filetransfer.upload.storageId:
+    label: 'Storage for uploaded files'
+    category: Filetransfer.upload
+    description: 'Storage UID where uploaded files will be stored'
+    type: int
+    default: 1
+  filetransfer.upload.folder:
+    label: 'Folder for uploaded files'
+    category: Filetransfer.upload
+    description: 'Folder path within the storage where uploaded files will be stored'
+    type: string
+    default: 'filetransfer'

@@ -70,6 +70,7 @@ return [
                 'type' => 'number',
                 'format' => 'integer',
                 'readonly' => true,
+                'default' => 1
             ],
         ],
         'asset' => [

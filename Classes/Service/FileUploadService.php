@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Wacon\Filetransfer\Service;
 
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -27,7 +28,6 @@ use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 use Wacon\Filetransfer\Domain\Model\Upload;
 use Wacon\Filetransfer\Exception\FileUploadException;
 use Wacon\Filetransfer\Utility\PathUtility;
@@ -270,7 +270,7 @@ class FileUploadService
     {
         $randomString = $this->random->generateRandomHexString(16);
 
-        return GeneralUtility::hmac($this->hashService->generateHmac($randomString), $name);
+        return $this->hashService->hmac($randomString, $name);
     }
 
     /**

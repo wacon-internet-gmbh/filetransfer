@@ -1,3 +1,11 @@
+## Version upgrade-v14-0
+- [DOCS] Change composer/ext_emconf TYPO3 version to V14
+- [TASK] Migrate \TYPO3\CMS\Extbase\Security\Cryptography\HashService
+- [TASK] Migrate TypoScript constants to Site Set
+- [TASK] Remove unnessesary SQL Statements in ext_tables.sql
+- [TASK] Migrate Frontend Plugin registration
+- [TASK] Migrate magic function findBy in Repository
+
 ## Version 2.1.0
 - [FEATURE] Extend fe_user to set its own mail_signature
 - [FEATURE] Prefill upload form with fe_user data, if login session is available

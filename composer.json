@@ -3,19 +3,19 @@
     "type": "typo3-cms-extension",
     "description": "TYPO3 Extension to send downloadables via email secury and privacy complaint.",
     "license": "GPL-2.0-or-later",
-	"version": "2.1.0",
+	"version": "3.0.0",
     "require": {
-        "php": ">= 8.1 < 8.4",
-        "typo3/cms-backend": "^12.4 || ^13.3",
-        "typo3/cms-core": "^12.4 || ^13.3"
+        "php": ">= 8.2 <= 8.4",
+        "typo3/cms-backend": "^13.4 || ^14.0",
+        "typo3/cms-core": "^13.4 || ^14.0"
     },
     "require-dev": {
 		"typo3/cms-composer-installers": "^5.0",
-		"typo3/cms-install": "^12.4 || ^13.3",
-        "typo3/testing-framework": "^8",
-		"typo3/coding-standards": "^0.7.1",
-		"phpunit/phpunit": "^10",
-		"friendsofphp/php-cs-fixer": "^3.52.1"
+		"typo3/cms-install": "^13.4 || ^14.0",
+		"typo3/testing-framework": "^8",
+		"typo3/coding-standards": "^0.8",
+		"phpunit/phpunit": "^10 || ^12.5",
+		"friendsofphp/php-cs-fixer": "^3.92"
     },
     "authors": [
         {

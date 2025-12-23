@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Service;
 
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 
 class TokenService
 {
@@ -40,6 +40,6 @@ class TokenService
     {
         $randomString = $this->random->generateRandomHexString(16);
 
-        return GeneralUtility::hmac($this->hashService->generateHmac($randomString), $additionalSecret);
+        return $this->hashService->hmac($randomString, $additionalSecret);
     }
 }

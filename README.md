@@ -14,7 +14,7 @@ Download and install the [extension][1] with the extension manager module.
 `composer req wacon/filetransfer`
 
 ### Recommended settings
-1. Use a separate file storage and set subfolder and id inside TypoScript (plugin.tx_filetransfer.settings), see TypoScript Browser
+1. Use a separate file storage and set subfolder inside Site set
 2. Use for Apache server our example [.htaccess file](Documentation/Configuration/htaccess.txt) to block direct file access.
 3. Don't make the upload page public available and use frontend login
 

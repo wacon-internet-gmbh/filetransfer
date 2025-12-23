@@ -27,7 +27,7 @@ It is highly recommended to set the access for this file storage to non public.
 
 Also use our [example htaccess protection](../Configuration/htaccess.txt). to avoid direct browser access to all uploaded files.
 
-## Step 4: Include TypoScript
+## Step 4: Include TypoScript (only until version 2)
 Include the extension's TypoScript template ("Create an additional TypoScript record") in the created folder.
 
 Define the storage folder and the path in the setup:
@@ -40,6 +40,14 @@ Define the storage folder and the path in the setup:
 ![Einstellungen vornehmen](assets/csm_typoscript2_23ce298b68.jpg "Einstellungen vornehmen")
 
 ![Storage-ID im Root Filestorage Container (Mouseover)alt text](assets/csm_typoscript3.jpg_c9ef995daf.jpg "Storage-ID im Root Filestorage Container (Mouseover)")
+
+## Step 4: Include TypoScript (version 3 and above)
+Include site set: **Filetransfer**.
+
+Define the storage folder and the path in the setup:
+![Site Set settings](assets/site-set.PNG)
+
+If you have already Bootstrap included, then disable the inclusion of Utility Templates.
 
 ## Step 5: Configure upload page
 Auf der Uploadseite wird nun das Plugin “Filetransfer - Upload [filetransfer_upload]” eingebunden.

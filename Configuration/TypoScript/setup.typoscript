@@ -1,12 +1,12 @@
 plugin.tx_filetransfer {
   settings {
     template {
-      includeUtilities = {$plugin.tx_filetransfer.settings.template.includeUtilities}
+      includeUtilities = {$filetransfer.templates.includeUtilities}
     }
 
     upload {
-      storage = 1
-      folder = filetransfer
+      storage = {$filetransfer.upload.storageId}
+      folder = {$filetransfer.upload.folder}
     }
   }
 }

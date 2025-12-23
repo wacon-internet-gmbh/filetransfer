@@ -38,7 +38,7 @@ final class DownloadController extends ActionController
      */
     public function downloadpageAction($token)
     {
-        $download = $this->uploadRepository->findByToken($token)->current();
+        $download = $this->uploadRepository->findBy(['token' => $token])->current();
 
         if (!$download || $download->getDownloadLimit() <= 0) {
             return $this->redirect('expired');
@@ -70,7 +70,7 @@ final class DownloadController extends ActionController
      */
     public function downloadAction($token)
     {
-        $download = $this->uploadRepository->findByToken($token)->current();
+        $download = $this->uploadRepository->findBy(['token' => $token])->current();
 
         if (!$download || $download->getDownloadLimit() <= 0) {
             return $this->redirect('expired');

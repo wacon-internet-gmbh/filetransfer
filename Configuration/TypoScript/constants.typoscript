@@ -1,8 +1,0 @@
-plugin.tx_filetransfer {
-  settings {
-    template {
-      # cat=plugin.tx_filetransfer/template/a0; type=boolean; label=LLL:EXT:filetransfer/Resources/Private/Language/locallang_constants.xlf:template.includeUtilities
-      includeUtilities = 1
-    }
-  }
-}
