@@ -1,3 +1,6 @@
+## Version 3.0.0
+- [IMPORTANT] LIVE Switch upgrade-v14
+
 ## Version upgrade-v14-1
 - [TASK] Add pages to backend form
 
