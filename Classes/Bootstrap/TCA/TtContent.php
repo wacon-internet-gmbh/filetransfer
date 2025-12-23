@@ -51,6 +51,13 @@ class TtContent extends Base
                 '',
                 $this->getFlexformPath('Upload.xml')
             );
+
+            ExtensionManagementUtility::addToAllTCAtypes(
+                'tt_content',
+                'pages',
+                $pluginSignature,
+                'after:pi_flexform'
+            );
         } else {
             $pluginSignature = ExtensionUtility::registerPlugin(
                 $this->getExtensionKeyAsNamespace(),
@@ -67,13 +74,20 @@ class TtContent extends Base
         }
 
         if ($this->typo3MajorVersion >= 14) {
-            ExtensionUtility::registerPlugin(
+            $pluginSignature = ExtensionUtility::registerPlugin(
                 $this->getExtensionKeyAsNamespace(),
                 'Download',
                 $this->getLLL('locallang_plugins.xlf:download.title'),
                 'tx-filetransfer',
                 'plugins',
                 ''
+            );
+
+            ExtensionManagementUtility::addToAllTCAtypes(
+                'tt_content',
+                '--div--;Plugin, pages',
+                $pluginSignature,
+                'after:palette:headers'
             );
         } else {
             ExtensionUtility::registerPlugin(

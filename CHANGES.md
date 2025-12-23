@@ -1,3 +1,6 @@
+## Version upgrade-v14-1
+- [TASK] Add pages to backend form
+
 ## Version upgrade-v14-0
 - [DOCS] Change composer/ext_emconf TYPO3 version to V14
 - [TASK] Migrate \TYPO3\CMS\Extbase\Security\Cryptography\HashService
