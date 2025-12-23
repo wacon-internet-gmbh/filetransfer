@@ -19,7 +19,6 @@ namespace Wacon\Filetransfer\Service;
 
 use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Crypto\Random;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TokenService
 {
