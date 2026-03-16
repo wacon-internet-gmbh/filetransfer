@@ -76,5 +76,5 @@ $config->setFinder(
         'whitespace_after_comma_in_array' => ['ensure_single_space' => true],
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
     ]);
-$config->setParallelConfig(ParallelConfigFactory::detect()->withTimeout(300));
+$config->setParallelConfig(ParallelConfigFactory::sequential());
 return $config;
