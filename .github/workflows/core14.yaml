@@ -24,4 +24,4 @@ jobs:
         run: Build/Scripts/runTests.sh -t 14 -p ${{ matrix.php }} -s lint
 
       - name: Validate code against CGL
-        run: PHP_CS_FIXER_IGNORE_ENV=1 Build/Scripts/runTests.sh -t 14 -p ${{ matrix.php }} -s cgl -n --sequential
+        run: PHP_CS_FIXER_IGNORE_ENV=1 Build/Scripts/runTests.sh -t 14 -p ${{ matrix.php }} -s cgl -n
