@@ -1,3 +1,6 @@
+## Version 3.1.0
+- [TASK] Add Upgrade wizard to migrate old plugins to new CType
+
 ## Version 3.0.1
 - [BUGFIX] Fix Nullable argument
 
