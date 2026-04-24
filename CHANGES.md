@@ -1,3 +1,6 @@
+## Version 3.1.1
+- [BUGFIX] PathUtility cannot inherit from readonly parent class
+
 ## Version 3.1.0
 - [TASK] Add Upgrade wizard to migrate old plugins to new CType
 

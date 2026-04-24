@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Wacon\Filetransfer\Utility;
 
-class PathUtility extends \TYPO3\CMS\Core\Utility\PathUtility
+class PathUtility
 {
     /**
      * Delete the first forwards slash
