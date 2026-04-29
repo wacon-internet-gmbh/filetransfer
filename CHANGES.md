@@ -1,3 +1,6 @@
+## Version 3.1.2
+- [BUGFIX] Upload->form argument nullable
+
 ## Version 3.1.1
 - [BUGFIX] PathUtility cannot inherit from readonly parent class
 
